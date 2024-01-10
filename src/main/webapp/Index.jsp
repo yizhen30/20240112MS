@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
 
@@ -58,11 +57,11 @@
             
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="Index.jsp"  class="nav-item nav-link active">Home</a>
-                    <a href="about.html"         class="nav-item nav-link">蘊星房型</a>
-                    <a href="questions.html"     class="nav-item nav-link">常見問題</a>
-                    <a href="Appointment.jsp"    class="nav-item nav-link">預約參觀</a>
-                    <a href="contact.html"       class="nav-item nav-link">聯絡我們</a>
+                    <a href="Index.jsp"       class="nav-item nav-link active">Home</a>
+                    <a href="About.jsp"       class="nav-item nav-link">蘊星房型</a>
+                    <a href="Questions.jsp"   class="nav-item nav-link">常見問題</a>
+                    <a href="Appointment.jsp" class="nav-item nav-link">預約參觀</a>
+                    <a href="Contact.jsp"     class="nav-item nav-link">聯絡我們</a>
                 </div>
                 
                 <a href="Login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登入<i class="fa fa-arrow-right ms-3"></i></a>
@@ -302,11 +301,11 @@
 	                    
 	                    <div class="col-lg-3 col-md-6">
 	                        <h3 class="text-white mb-4">網頁導覽</h3>
-	                        <a class="btn btn-link text-white-50" href="index.html">Home</a>
-	                        <a class="btn btn-link text-white-50" href="about.html">蘊星房型</a>
-	                         <a class="btn btn-link text-white-50" href="questions.html">常見問題</a>
-	                        <a class="btn btn-link text-white-50" href="Appointment.jsp">預約參觀</a>
-	                        <a class="btn btn-link text-white-50" href="contact.html">聯絡我們</a>
+	                         <a class="btn btn-link text-white-50" href="Index.jsp">Home</a>
+	                         <a class="btn btn-link text-white-50" href="About.jsp">蘊星房型</a>
+	                         <a class="btn btn-link text-white-50" href="Questions.jsp">常見問題</a>
+	                         <a class="btn btn-link text-white-50" href="Appointment.jsp">預約參觀</a>
+	                         <a class="btn btn-link text-white-50" href="Contact.jsp">聯絡我們</a>
 	                    </div>
                     
 	                    <div class="col-lg-3 col-md-6">

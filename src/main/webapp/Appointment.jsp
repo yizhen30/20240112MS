@@ -61,13 +61,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="index.html" class="nav-item nav-link active">Home</a>
-                    <a href="about.html" class="nav-item nav-link">蘊星房型</a>
-                     <a href="questions.html" class="nav-item nav-link">常見問題</a>
-                    <a href="appointment.html" class="nav-item nav-link">預約參觀</a>
-                    <a href="contact.html" class="nav-item nav-link">聯絡我們</a>
+                    <a href="Index.jsp"       class="nav-item nav-link active">Home</a>
+                    <a href="About.jsp"       class="nav-item nav-link">蘊星房型</a>
+                    <a href="Questions.jsp"   class="nav-item nav-link">常見問題</a>
+                    <a href="Appointment.jsp" class="nav-item nav-link">預約參觀</a>
+                    <a href="Contact.jsp"     class="nav-item nav-link">聯絡我們</a>
                 </div>
-                <a href="login.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登入<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="Login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登入<i class="fa fa-arrow-right ms-3"></i></a>
             </div>
         </nav>
         <!-- Navbar End -->
@@ -101,18 +101,20 @@
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
                                 <h1 class="mb-4"align="center">預約參觀</h1>
                                 
-                            <form action="AppointInsert_DB.jsp" method="get">
+                            <form action="Appointment_DBInsertInto.jsp" method="get">
                             <div class="row g-3">
-                            	<!--　媽媽姓名　-->
+                            	<!--　媽媽（參觀者）姓名　-->
 	                                <div class="col-12 col-sm-6">
-	                                   <input type="text" class="form-control border-0" placeholder="媽媽姓名" 
-	                                   name="Name" style="height: 55px;">
+	                                   <label>媽媽姓名</label>
+	                                   <input type="text" class="form-control border-0"  
+	                                   name="VisitName" style="height: 55px;">
 	                                </div>                                
                                 <!--　－－－－　-->
                                 
                                 <!--　預約日期　 -->
 	                                <div class="col-12 col-sm-6">
 	                                    <div class="date" id="date" data-target-input="nearest">
+	                                        <label>預約日期</label>
 	                                        <input type="date"
 	                                            class="form-control border-0 datetimepicker-input"
 	                                            placeholder="預約日期" data-target="#date" data-toggle="datetimepicker" 
@@ -121,10 +123,10 @@
 	                                </div>
                                 <!--　－－－－　-->
 	                     
-                                <!--　Email　-->
-                                                                	
+                                <!--　Email　-->                                                                	
                                 	<div class="col-12 col-sm-6">
-	                                    <input type="email" class="form-control border-0" name="Email" style="height: 55px;"placeholder="請填寫您的信箱" required>
+	                                    <label>Email</label>
+	                                    <input type="email" class="form-control border-0" name="VisitEmail" style="height: 55px;" required>
 	                                </div> 
 	                            
 	                                
@@ -132,27 +134,29 @@
                                                                                              
                                 <!--　預約時段　-->	                                
 	                                <div class="col-12 col-sm-6">
+                                    <label>預約時段</label>
                                     <select class="form-select border-0" name="VisitTime" style="height: 55px;">
-                                        <option selected>預約時段</option>
+                                        <option selected>請下拉選擇</option>
                                         <option value="1">AM9:00~12:00</option>
                                         <option value="2">PM13:00~16:00</option>
                                         <option value="3">PM17:00~19:00</option>
-                                       
                                     </select>
                                 </div>
                                 <!--　－－－－　-->
                                 
                                 <!--　聯絡電話　-->
 	                                <div class="col-12 col-sm-6">
-                                    	<input type="text" class="form-control border-0" placeholder="聯絡電話" 
-                                    	name="Phone" style="height: 55px;">
+	                                	<label>聯絡電話</label>
+                                    	<input type="text" class="form-control border-0" 
+                                    	name="VisitPhone" style="height: 55px;">
                                		</div>
                                 <!--　－－－－　-->
                                 
                                 <!--　攜伴人數　-->
 	                                <div class="col-12 col-sm-6">
+	                                    <label>攜伴人數</label>
 	                                    <select class="form-select border-0" name="Companions" style="height: 55px;">
-	                                        <option selected>攜伴人數</option>
+	                                        <option selected>請下拉選擇</option>
 	                                        <option value="1">1人</option>
 	                                        <option value="2">2人</option>
 	                                        <option value="3">3人</option>
@@ -164,6 +168,7 @@
                                 <!--　 預產期　　 -->	                                
 	                                <div class="col-12 col-sm-6">
 	                                    <div class="date" id="date" data-target-input="nearest">
+	                                        <label>預產期</label>
 	                                        <input type="date"
 	                                            class="form-control border-0 datetimepicker-input"
 	                                            placeholder="預產期" data-target="#date" data-toggle="datetimepicker" 
@@ -174,8 +179,9 @@
                                 
                                 <!--　 　胎次　　 -->
 	                                <div class="col-12 col-sm-6">
+	                                    <label>胎次</label>
 	                                    <select class="form-select border-0" name="Parity" style="height: 55px;">
-	                                        <option selected>胎次</option>
+	                                        <option selected>請下拉選擇</option>
 	                                        <option value="1">第一胎</option>
 	                                        <option value="2">第二胎</option>
 	                                        <option value="3">第三胎</option>
@@ -186,11 +192,12 @@
                                 
                                 <!--　想入住天數  -->
                                 	<div class="col-12 col-sm-6">
-	                                    <select class="form-select border-0" name="Day" style="height: 55px;">
-	                                        <option selected>想入住天數</option>
+	                                    <label>想入住天數</label>
+	                                    <select class="form-select border-0" name="StayingDay" style="height: 55px;">
+	                                        <option selected>請下拉選擇</option>
 	                                        <option value="1">15天</option>
-	                                        <option value="2">20天</option>
-	                                        <option value="3">30天</option>
+	                                        <option value="2">28天</option>
+	                                        <option value="3">32天</option>
 	                                        <option value="4">尚未決定</option>
 	                                    </select>
 	                                </div>
@@ -198,14 +205,16 @@
                                 
                                 <!--　胎次＿其他  -->
 	                                <div class="col-12 col-sm-6">
-	                                    <input type="text" class="form-control border-0" placeholder="胎次_其他" 
+	                                    <label>胎次＿其他</label>
+	                                    <input type="text" class="form-control border-0" 
 	                                    name="ParityOther" style="height: 55px;">
 	                                </div>
                                 <!--　 －－－－　 -->
                                 
                                 <!--　 其他留言　 -->
                                 	<div class="col-12">
-	                                    <textarea class="form-control border-0" rows="5" placeholder="其他留言" name="Message"></textarea>
+	                                    <label>其他留言</label>
+	                                    <textarea class="form-control border-0" rows="5"  name="Message"></textarea>
 	                                </div>
                                 <!--　 －－－－　 -->
                                 
@@ -255,11 +264,11 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">網頁導覽</h3>
-                        <a class="btn btn-link text-white-50" href="index.html">Home</a>
-                        <a class="btn btn-link text-white-50" href="about.html">蘊星房型</a>
-                         <a class="btn btn-link text-white-50" href="questions.html">常見問題</a>
-                        <a class="btn btn-link text-white-50" href="appointment.html">預約參觀</a>
-                        <a class="btn btn-link text-white-50" href="contact.html">聯絡我們</a>
+                             <a class="btn btn-link text-white-50" href="Index.jsp">Home</a>
+	                         <a class="btn btn-link text-white-50" href="About.jsp">蘊星房型</a>
+	                         <a class="btn btn-link text-white-50" href="Questions.jsp">常見問題</a>
+	                         <a class="btn btn-link text-white-50" href="Appointment.jsp">預約參觀</a>
+	                         <a class="btn btn-link text-white-50" href="Contact.jsp">聯絡我們</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Photo </h3>
@@ -280,21 +289,17 @@
                     </div>
                 </div>
             </div>
-            <div class="container">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">蘊星產後護理之家</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">蘊星產後護理之家</a>
-                        </div>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <div class="container bg-dark">
+	            <div class="copyright">
+		            <div class="row">
+			            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+				            &copy;蘊星產後護理之家, All Right Reserved. 
+							Designed By <a class="border-bottom" href="#">蘊星產後護理之家</a>
+			            </div>
+		            </div>
+	            </div>
+            </div>         
+        
         <!-- Footer End -->
 
         <!-- Back to Top -->
