@@ -92,7 +92,18 @@
 		        </div>
 		
 		</form>
+ <div class="container-xxl py-0">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class= data-wow-delay="0.1s" style="min-height: 300px;">
+                          
+     
 
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark  text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
