@@ -66,20 +66,44 @@
             <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
         <!-- Navbar End -->
-
+		<%request.setCharacterEncoding("UTF-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			Statement smt= con.createStatement();
+			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql1 ="SELECT * FROM MatForm left JOIN BloodType ON MatForm.MatBT = BloodType.BT_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql2 ="SELECT * FROM MatForm left JOIN Relationship ON MatForm.WithMatRel = Relationship.Rel_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql3 ="SELECT * FROM MatForm left JOIN ProMethods ON MatForm.ProMethods = ProMethods.ProMet_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql4 ="SELECT * FROM DiePre";
+			String sql5 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			//String sql4 ="SELECT * FROM MatForm left JOIN DiePre ON MatForm.DiePre = DiePre.DiePre_SeqNO where MatForm.MatEmail ='" +session.getAttribute("MatEmail")+"'";
+			ResultSet rs = smt.executeQuery(sql);
+			ResultSet rs1 = smt.executeQuery(sql1);
+			ResultSet rs2 = smt.executeQuery(sql2);
+			ResultSet rs3 = smt.executeQuery(sql3);
+			ResultSet rs4 = smt.executeQuery(sql4);
+			ResultSet rs5 = smt.executeQuery(sql5);
+			rs.next();
+			rs1.next();
+			rs2.next();
+			rs3.next();
+			rs4.next();
+			rs5.next();
+		%>
 			<br><h2 align="center">媽媽健康測量記錄</h2>
 			 <br>  <table style="width:80%"> 
 			  <tr>
 			    <th>媽媽代碼</th>
-			    <td>M100000</td>
+			    <td><%=rs.getString("Mat_SeqNO") %></td>
 			    <th>媽媽姓名</th>
-			    <td>陳小美</td>
+			    <td><%=rs.getString("MatName") %></td>
 			    <th>媽媽身份證字號</th> 
-			    <td>G123456789</td>
+			    <td><%=rs.getString("MatID") %></td>
 			    <th>出生年月日</th> 
-			    <td>1997年1月15日</td>
+			    <td><%=rs.getString("MatHBD") %></td>
 			    <th>入住日期</th> 
-			    <td>2023年12月15日</td></table>  
+			    <td><%=rs5.getString("MatCheckIn.CheckInDate") %></td></table>  
 		
 		
          <div class="container-xxl py-3">
