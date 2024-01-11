@@ -169,25 +169,40 @@
 									 <td>　</td>
 								</tr>
 								
-							    <tr>
-									 <td>　</td><!-- 媽媽的飲食注意事項 -->
-									 <td><h5><b><label for="DiePre1">飲食注意事項</label></b></h5></td>
-									 <td><h5><%=rs4.getString("DiePre.DiePre")%>
-										 <select name="DiePre">
-	                                        <option selected>飲食限制</option>
-	                                        <option value="1">葷</option>
-	                                        <option value="2">全素</option>
-	                                        <option value="3">奶蛋素</option>
-	                                        <option value="4">奶素</option>
-	                                        <option value="5">蛋素</option>
-	                                        <option value="6">植物五辛素</option>
-	                                     </select>										 
-										 </h5>
-								     </td>
+								<tr>
+									 <td>　</td><!-- 媽媽的通訊地址 -->
+									 <td><h5><b><label for="MatAddress1">通訊地址</label></b></h5></td>
+									 <td><h5><input type="text" name="MatAddress" value="<%=rs.getString("MatAddress")%>" /></h5></td>
 									 <td>　</td>
 									 <td>　</td>
 								</tr>
-							    
+								    
+								<tr>
+									 <td>　</td><!-- 媽媽的飲食注意事項 -->
+									 <td><h5><b><label for="DiePre">飲食注意事項</label></b></h5></td>
+									 <td><h5 style="color:#004B96;">
+										 <%=rs4.getString("DiePre.DiePre")%>
+											<select name="DiePre">
+		                                        <option selected>飲食限制</option>
+		                                        <option value="1">葷</option>
+		                                        <option value="2">全素</option>
+		                                        <option value="3">奶蛋素</option>
+		                                        <option value="4">奶素</option>
+		                                        <option value="5">蛋素</option>
+		                                        <option value="6">植物五辛素</option>
+		                                    </select></h5></td>
+									 <td>　</td>
+									 <td>　</td>
+								</tr>
+								
+								<tr>
+									 <td>　</td><!-- 其他留言 -->
+									 <td><h5><b><label for="Remark1">備註</label></b></h5></td>
+									 <td><h5><input type="text" name="Remark" value="<%=rs.getString("Remark")%>" /></h5></td>
+									 <td>　</td>
+									 <td>　</td>
+								</tr>							
+							  						    
 							    <tr>
 							    	<td>　</td>
 							    	<td>　</td>
