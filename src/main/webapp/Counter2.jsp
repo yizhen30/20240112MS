@@ -88,16 +88,7 @@
 		      <h5>&emsp; &emsp; 媽媽身分證字號 <input type="text" placeholder="輸入媽媽身分證字號..." name="SearchID" required> 
 		      <button type="submit" name="searchBtn" value="查詢" > 確認</button>  <a href="Counter4.jsp"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
 		         <div class="container-xxl py-3">
-		            <div class="container">
-		                <div class="bg-light rounded">
-		                    <div class="row g-0">
-		                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-		                           
-		     
-		
-		                    </div>
-		                </div>
-		            </div>
+		            
 		        </div>
 		
 		</form>

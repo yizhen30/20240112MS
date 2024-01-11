@@ -71,9 +71,9 @@
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql1 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql2 ="SELECT * FROM MatForm left JOIN HealthExMat ON MatForm.Mat_SeqNO = HealthExMat.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO";
+			String sql1 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO";
+			String sql2 ="SELECT * FROM MatForm left JOIN HealthExMat ON MatForm.Mat_SeqNO = HealthExMat.Mat_SeqNO";
 			
 			ResultSet rs = smt.executeQuery(sql);
 			ResultSet rs1 = smt.executeQuery(sql1);

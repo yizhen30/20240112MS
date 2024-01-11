@@ -63,7 +63,15 @@
              <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
         <!-- Navbar End -->
-        
+        <%request.setCharacterEncoding("UTF-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			Statement smt= con.createStatement();
+			String sql = "SELECT * FROM StaffForm";
+			ResultSet rs = smt.executeQuery(sql);
+			rs.next();
+		%>
          <div class="container-xxl py-5">
             <div class="container">
                 <div class="bg-light rounded">
@@ -75,7 +83,8 @@
                         </div>
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4"align="center">歡迎登入系統</h1>
+                                <h1 class="mb-4" align="center" style="color:#004B96;"><%=rs.getString("StaffName")%> 您好</h1>                                
+                                <h2 class="mb-4" align="center">歡迎登入系統</h2>
                                 <p class="mb-4"align="center">
                                                         </div>
                     </div>
