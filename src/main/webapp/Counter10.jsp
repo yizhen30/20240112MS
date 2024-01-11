@@ -71,11 +71,11 @@
 			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO";
 			String sql1 = "SELECT * FROM Gender";
 			String sql2 = "SELECT * FROM BloodType";
-			String sql3 = "SELECT * FROM MatCheckIn";
+			String sql3 = "SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO";
 			ResultSet rs = smt.executeQuery(sql);
 			ResultSet rs1 = smt.executeQuery(sql1);
 			ResultSet rs2 = smt.executeQuery(sql2);
-			ResultSet rs3 = smt.executeQuery(sql2);
+			ResultSet rs3 = smt.executeQuery(sql3);
 			rs.next();
 			rs1.next();
 			rs2.next();
@@ -90,24 +90,24 @@
                            <table style="width:20%" align="right"> 
 								  	<tr>
 									    <th>入住日期</th>
-									    <td><%=rs3.getString("CheckInDate")%></td>
+									    <td><%=rs3.getString("MatCheckIn.CheckInDate")%></td>
 								    </tr>
 						   </table>
                            <table style="none;width:100%">
 	                            	<tr>
 									    <td>　</td>
-									    <td><h3><b><label><%=rs.getString("MatName")%>的資料</label></b></h3></td>
+									    <td><h3><b><label><%=rs.getString("MatName")%>的寶寶</label></b></h3></td>
 									    <td>　</td>
 									    <td>　</td>
-									    <td><h3><b><label>緊急聯絡人的資料</label></b></h3></td>
+									    <td><h3><b><label>寶寶出生的資料</label></b></h3></td>
 									    <td>　</td>
 								    </tr>
 								    
 	                            	<tr>
-									    <td>　</td><!-- Baby_SeqNO -->
+									    <td>　</td><!-- 寶寶的編號 -->
 									    <td><h5><b><label for="Baby_SeqNO">寶寶編號</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs.getString("Baby_SeqNO")%></h5></td>
-									    <td>　</td><!-- 出生體重 -->
+									    <td>　</td><!-- 寶寶的出生體重 -->
 									    <td><h5><b><label for="BirthWeight">出生體重</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs.getString("BirthWeight")%></h5></td>
 								    </tr>
@@ -116,8 +116,8 @@
 								    	<td>　</td><!-- 寶寶姓名 -->
 									    <td><h5><b><label for="BabyName">寶寶姓名</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs.getString("BabyName")%></h5></td>
-									    <td>　</td><!-- 出生身高 -->
-									    <td><h5><b><label for="WithMatRel">出生身高</label></b></h5></td>
+									    <td>　</td><!-- 寶寶的出生身高 -->
+									    <td><h5><b><label for="BirthHeight">出生身高</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs.getString("BirthHeight")%></h5></td>
 								    </tr>
 								    
@@ -125,27 +125,27 @@
 									    <td>　</td><!-- 寶寶的出生年月日 -->
 									    <td><h5><b><label for="BabyHBD">出生年月日</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs.getString("BabyHBD")%></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的身分證字號 -->
-									    <td><h5><b><label for="MatFamID">身分證字號</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamID")%></h5></td>
+									    <td>　</td><!-- 寶寶的出生頭圍 -->
+									    <td><h5><b><label for="BirthHC">出生頭圍</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("BirthHC")%></h5></td>
 								    </tr>
 								    
 								    <tr>
 									    <td>　</td><!-- 寶寶的性別 -->
-									    <td><h5><b><label for="BabyGender">聯絡電話</label></b></h5></td>
+									    <td><h5><b><label for="BabyGender">性別</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs1.getString("Gender") %></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的電話 -->
-									    <td><h5><b><label for="MatFamPhone">聯絡電話</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamForm.MatFamPhone") %></h5></td>
+									    <td>　</td>
+									    <td>　</td>
+									    <td>　</td>
 								    </tr> 
 								    
 								    <tr>
 									    <td>　</td><!-- 寶寶的血型 -->
 									    <td><h5><b><label for="BabyBT">電子郵件</label></b></h5></td>
 									    <td><h5 style="color:#004B96;"><%=rs2.getString("BloodType") %></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的電子郵件 -->
-									    <td><h5><b><label for="MatFamEmail">電子郵件</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamEmail") %></h5></td>
+									    <td>　</td>
+									    <td>　</td>
+									    <td>　</td>
 								    </tr>
 								    
 								    								    
