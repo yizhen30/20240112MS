@@ -96,7 +96,7 @@
 	        <div class="container-xxl py-5">
 	            <div class="container">
 	                <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 600px;">
-	                    <h1 class="mb-3">關於蘊星</h1>
+	                    <h2 class="mb-3">關於蘊星</h2>
 	                    <p>蘊星擁有完整的專業照護及設備</p>
 	                </div>
 	                

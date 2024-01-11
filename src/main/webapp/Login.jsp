@@ -83,7 +83,7 @@
                     </div>
                    
                 
-                <a href="Login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">登入<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="Login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登入<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
         <!-- Navbar End -->
 

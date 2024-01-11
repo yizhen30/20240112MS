@@ -59,38 +59,29 @@
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            
+             <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav mx-auto">
+                    <a href="Index.jsp"       class="nav-item nav-link active">Home</a>
+                    <a href="About.jsp"       class="nav-item nav-link">蘊星房型</a>
+                    <a href="Questions.jsp"   class="nav-item nav-link">常見問題</a>
+                    <a href="Appointment.jsp" class="nav-item nav-link">預約參觀</a>
+                    <a href="Contact.jsp"     class="nav-item nav-link">聯絡我們</a>
+                </div>
+                
+                <a href="Login.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登入<i class="fa fa-arrow-right ms-3"></i></a>
+            </div>
         </nav>
         <!-- Navbar End -->
 
 
-        <!-- Page Header End -->
-        <div class="container-xxl py-5 page-header position-relative mb-5">
-            <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">預約參觀</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        
-                        <li class="breadcrumb-item text-white active" aria-current="page">預約參觀</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <!-- Page Header End -->
-
-
-        
-
-
         <!-- Appointment Start -->
-        <div class="container-xxl py-5">
+        <div class="container-xxl py-0">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
                         <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4"align="center">預約參觀</h1>
+                                <h2 class="mb-4"align="center">預約參觀</h2>
                                 
                             <form action="Appointment_DBInsertInto.jsp" method="get">
                             <div class="row g-3">
@@ -205,14 +196,14 @@
                                 <!--　 其他留言　 -->
                                 	<div class="col-12">
 	                                    <label>其他留言</label>
-	                                    <textarea class="form-control border-0" rows="5"  name="Message"></textarea>
+	                                    <textarea class="form-control border-0" rows="3"  name="Message"></textarea>
 	                                </div>
                                 <!--　 －－－－　 -->
                                 
-                                <div class="col-12 col-sm-6">
+                               
 	                                <div class="col-12">
 	                                    <button class="btn btn-primary w-100 py-3" type="submit">送出</button>
-	                                </div>
+	                                
                             	</div>
                             	
                             </div>
@@ -220,7 +211,7 @@
                         
                             </div>
                             </div>
-                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 400px;">
+                            <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s" style="min-height: 350px;">
                             <div class="position-relative h-100">
                                 <img class="position-absolute w-100 h-100 rounded" src="img/b2869318.jpg" style="object-fit: cover;">
                             </div>
