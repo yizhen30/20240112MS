@@ -54,8 +54,8 @@
 			String Email = new String(request.getParameter("MatEmail"));
 			//String MatID_Edit = new String(request.getParameter("MatID_Edit"));
 			String MatHBD_Edit = new String(request.getParameter("MatHBD"));
-			smt1.executeUpdate("UPDATE MatFamForm SET MatFamForm.MatFamName ='" +FamName+ "', MatFamForm.MatFamPhone ='" + MatFamPhone+"' WHERE MatFam_SeqNO='" + session.getAttribute("UserFamID")+"'");
-			smt2.executeUpdate("UPDATE MatForm SET MatForm.RelWithMF='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.ConPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.Email ='" + Email+"', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
+			smt1.executeUpdate("UPDATE MatFamForm SET MatFamForm.MatFamName ='" +FamName+ "', MatFamForm.MatFamPhone ='" + MatFamPhone+"' WHERE MatID='" + session.getAttribute("UserID")+"'");
+			smt2.executeUpdate("UPDATE MatForm SET MatForm.WithMatRel='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.ConPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.Email ='" + Email+"', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
 			//smt1.executeUpdate("UPDATE MatForm SET MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
 			response.sendRedirect("Counter7.jsp?MatID="+request.getParameter("MatID")+"");
 		%>
