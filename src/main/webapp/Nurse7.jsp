@@ -72,24 +72,17 @@
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= con.createStatement();
 			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql1 ="SELECT * FROM MatForm left JOIN BloodType ON MatForm.MatBT = BloodType.BT_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql2 ="SELECT * FROM MatForm left JOIN Relationship ON MatForm.WithMatRel = Relationship.Rel_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql3 ="SELECT * FROM MatForm left JOIN ProMethods ON MatForm.ProMethods = ProMethods.ProMet_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql4 ="SELECT * FROM DiePre";
-			String sql5 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			//String sql4 ="SELECT * FROM MatForm left JOIN DiePre ON MatForm.DiePre = DiePre.DiePre_SeqNO where MatForm.MatEmail ='" +session.getAttribute("MatEmail")+"'";
+			String sql1 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql2 ="SELECT * FROM MatForm left JOIN HealthExMat ON MatForm.Mat_SeqNO = HealthExMat.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			
 			ResultSet rs = smt.executeQuery(sql);
 			ResultSet rs1 = smt.executeQuery(sql1);
 			ResultSet rs2 = smt.executeQuery(sql2);
-			ResultSet rs3 = smt.executeQuery(sql3);
-			ResultSet rs4 = smt.executeQuery(sql4);
-			ResultSet rs5 = smt.executeQuery(sql5);
+			
 			rs.next();
 			rs1.next();
 			rs2.next();
-			rs3.next();
-			rs4.next();
-			rs5.next();
+			
 		%>
 			<br><h2 align="center">媽媽健康測量記錄</h2>
 			 <br>  <table style="width:80%"> 
@@ -103,7 +96,7 @@
 			    <th>出生年月日</th> 
 			    <td><%=rs.getString("MatHBD") %></td>
 			    <th>入住日期</th> 
-			    <td><%=rs5.getString("MatCheckIn.CheckInDate") %></td></table>  
+			    <td><%=rs2.getString("MatCheckIn.CheckInDate") %></td></table>  
 		
 		
          <div class="container-xxl py-3">
@@ -116,7 +109,7 @@
                     		<h5 align="right">
 						        <button type="submit" style="background:#FF9999"> 新增紀錄</button>
 						        <button type="button" style="background:#D4E1F5"> 列印</button>
-						        <a href="nurse5.html"><button type="button"style="background:#FFF2E0">回上一頁</button></a>
+						        <a href="Nurse5.jsp"><button type="button"style="background:#FFF2E0">回上一頁</button></a>
 					        </h5>
 		                    	<table style="width:100%" align="center">
 								      <tr>
@@ -148,14 +141,7 @@
 	                               	    <!--　－－－－　-->
 	                               	  </tr>
 	                               	  <tr>  
-	                               	    <!--　心跳指數(bpm)　-->
-			                                <td>
-				                                <div class="col-12 col-sm-6">
-				                                   <b>心跳指數</b>
-				                                   <input type="text" class="form-control border-2" name="Mbpm" placeholder="XX（bpm）" style="height: 40px;width:200px"/>
-				                                </div>
-			                                </td>                            
-	                               	    <!--　－－－－　-->
+	                               	   
 	                               	    
 	                               	    <!--　血糖測量時間　-->
 			                                <td>
@@ -175,11 +161,12 @@
 			                                <td>
 				                                <div class="col-12 col-sm-6">
 				                                   <b>血糖指數</b>
-				                                   <input type="text" class="form-control border-2" name="MBloodSugar" placeholder="XX（mg/dL）" style="height: 40px;width:200px"/>
+				                                   <input type="text" class="form-control border-2" name="MBS" placeholder="XX（mg/dL）" style="height: 40px;width:200px"/>
 				                                </div>
 			                                </td>                                
 	                               	    <!--　－－－－　-->                                
-		                             
+		                             	
+		                             	
 		                             </tr>    
 		                   		</table>
 		                    </form>                    

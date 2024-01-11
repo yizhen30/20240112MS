@@ -234,15 +234,12 @@
             <div class="container bg-dark">
                 <div class="copyright">
                     <div class="row">
-                        <div class="col-md-6  text-center text-md-start mb-3 mb-md-0"><br>
-                            &copy; <a class="border-bottom" href="#">蘊星產後護理之家</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">蘊星產後護理之家</a>
-                        </div>
-                        
-                        </div>
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+				            &copy;蘊星產後護理之家, All Right Reserved. 
+							Designed By <a class="border-bottom" href="#">蘊星產後護理之家</a>
+			            </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
