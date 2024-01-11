@@ -5,7 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>健康測量記錄</title>
+	<title>護理人員首頁</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -32,6 +32,7 @@
     <!-- Template Stylesheet -->
     <link href="css/style.css" rel="stylesheet">
 </head>
+
 <body>
 <div class="container-xxl bg-white p-0">
         <!-- Spinner Start -->
@@ -45,7 +46,7 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="ms1.html" class="navbar-brand">
+            <a href="nurse1.html" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-star me-3"></i>蘊星產後護理之家</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -53,86 +54,41 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                    <a href="Ms2.jsp" class="nav-item nav-link">個人資料</a>
-                    <a href="Ms3.jsp" class="nav-item nav-link">健康測量記錄</a>
-                    <a href="Ms4.jsp" class="nav-item nav-link">寶寶線上探視</a>
-                    <a href="Ms5.jsp" class="nav-item nav-link">寶寶健康測量記錄</a>                    
+                     <a href="Nurse2.jsp" class="nav-item nav-link">寶寶健康測量記錄</a>
+                     <a href="Nurse4.jsp" class="nav-item nav-link">媽媽健康測量記錄</a>
+                     <a href="Nurse8.jsp" class="nav-item nav-link">媽媽基本資料</a>
                 </div>
             </div>
-            
             <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
-       
         </nav>
         <!-- Navbar End -->
-        
-		<%request.setCharacterEncoding("UTF-8"); %>
-		<%
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
-			//out.println("Con= "+con);
-			Statement smt= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN HealthExMat ON MatForm.Mat_SeqNO = HealthExMat.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
-			String sql1 = "SELECT * FROM BloodSugarTime";
-			String sql2 = "SELECT * FROM MatFeeding";
-			String sql3 = "SELECT * FROM StaffForm";
-			ResultSet rs = smt.executeQuery(sql);
-			ResultSet rs1 = smt.executeQuery(sql1);
-			ResultSet rs2 = smt.executeQuery(sql2);
-			ResultSet rs3 = smt.executeQuery(sql3);
-			rs.next();
-			rs1.next();
-			rs2.next();
-			rs3.next();
-		%>
 
-       	<br><h2 style="color:black"align="center"><b><%out.println(session.getAttribute("accessName"));%>的健康測量記錄</b></h2>
+
+       
 
          <div class="container-xxl py-3">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
-                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-			            <form action="Ms2.jsp?MatEmail=<%out.println(session.getAttribute("accessID"));%>" method="post" name="form" >                
-							<table style="width:100%">
-							  <tr>
-							    <th>體溫</th>
-							    <th>體重</th>
-							    <th>血壓</th>
-							    <th>血糖測量時間</th>
-							    <th>血糖</th>
-							    <th>哺乳方式</th>
-				                <th>備註</th>
-							    <th>紀錄日期</th>
-							    <th>紀錄時間</th>
-							    <th>護理人員</th>
-							  </tr>
-							  
-							  
-							  <tr>
-							  	<td><%=rs.getString("MTemp")%>°C</td>
-								<td><%=rs.getString("MWeight")%>kg</td>
-								<td><%=rs.getString("MmmHg")%>mmHg</td>
-								<td><%=rs1.getString("BloodSugarTime.Time")%></td>
-								<td><%=rs.getString("MBS")%>mg/dl</td>
-								<td><%=rs2.getString("MatFeeding.MatFeeding")%></td>
-								<td><%=rs.getString("MRemark")%></td>
-								<td><%=rs.getString("RecordDate")%></td>
-								<td><%=rs.getString("RecordTime")%></td>
-								<td><%=rs3.getString("StaffForm.StaffName")%></td>
-							  </tr>
-							  
-							</table>
-						</form>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
+                            <div class="position-relative h-100">
+                                <img class="position-absolute w-100 h-100 rounded" src="img/baby5.jpg" style="object-fit: cover;">
+                            </div>
+                        </div>
+                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+                            <div class="h-100 d-flex flex-column justify-content-center p-5">
+                                <h1 class="mb-4"align="center">歡迎登入系統</h1>
+                                <p class="mb-4"align="center">
+                            </div>
+                       </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-</div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
-            <div class="container py-3">
+            <div class="container py-5">
                 <div class="row g-5">
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">聯絡我們</h3>
@@ -148,11 +104,10 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">系統導覽</h3>
-	                        <a class="btn btn-link text-white-50" href="Ms1.jsp">媽媽首頁</a>
-	                        <a class="btn btn-link text-white-50" href="Ms2.jsp">我的資料</a>
-	                        <a class="btn btn-link text-white-50" href="Ms3.jsp">健康測量記錄</a>
-	                        <a class="btn btn-link text-white-50" href="Ms4.jsp">寶寶線上探視</a>
-	                        <a class="btn btn-link text-white-50" href="Ms5.jsp">寶寶健康測量紀錄</a>
+                        <a class="btn btn-link text-white-50" href="Nurse1.jsp">護理人員首頁</a>
+                        <a class="btn btn-link text-white-50" href="Nurse2.jsp">寶寶健康測量紀錄</a>
+                        <a class="btn btn-link text-white-50" href="Nurse4.jsp">媽媽健康測量記錄</a>
+                        <a class="btn btn-link text-white-50" href="Nurse8.jsp">媽媽基本資料</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Photo </h3>
@@ -173,25 +128,22 @@
                     </div>
                 </div>
             </div>
-            <div class="container bg-dark">
-	            <div class="copyright">
-		            <div class="row">
-			            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+            <div class="container-dark">
+                <div class="copyright">
+                    <div class="row">
+                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
 				            &copy;蘊星產後護理之家, All Right Reserved. 
 							Designed By <a class="border-bottom" href="#">蘊星產後護理之家</a>
 			            </div>
-		            </div>
-	            </div>
+                    </div>
+                </div>
             </div>
-            </div>
-       
+        </div>
+        </div>
         <!-- Footer End -->
-
 		<!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
-    
 
-       
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

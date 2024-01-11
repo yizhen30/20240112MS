@@ -113,13 +113,14 @@
 						    <th>紀錄時間</th>
 						    <th>護理人員</th>
 						  </tr>
+						  
 						  <tr>
 						  	<th><%=rs.getString("BabyName")%></th>
-						  	<td><%=rs1.getString("BTemp")%></td>
-						    <td><%=rs1.getString("BWeight")%></td>
-						    <td><%=rs1.getString("BHeight")%></td>
+						  	<td><%=rs1.getString("BTemp")%>°C</td>
+						    <td><%=rs1.getString("BWeight")%>g</td>
+						    <td><%=rs1.getString("BHeight")%>cm</td>
 						    <td><%=rs1.getString("Heartbeat")%></td>
-						    <td><%=rs1.getString("Jaundice")%></td>
+						    <td><%=rs1.getString("Jaundice")%>mg/dl</td>
 						    <td><%=rs1.getString("BDrink")%></td>
 						    <td><%=rs1.getString("Excretion")%></td>
 						    <td><%=rs2.getString("PoopCondition.PoopCondition")%></td>
