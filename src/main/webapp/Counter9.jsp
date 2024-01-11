@@ -73,9 +73,9 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
                         <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
-                    <a href="counter9.html" class="nav-item nav-link">寶寶基本資料</a>
-                    <a href="counter13.html" class="nav-item nav-link">客戶預約</a>
-                    <a href="counter16.html" class="nav-item nav-link">使用者權限管理</a>
+	                    <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
+	                    <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
+                    
                         </div>
                     </div>
               
@@ -121,11 +121,11 @@
                     </div>
                     <div class="col-lg-3 col-md-2">
                         <h3 class="text-white mb-4">系統導覽</h3>
-                       <a class="btn btn-link text-white-50" href="counter1.html">櫃檯人員首頁</a>
-                        <a class="btn btn-link text-white-50" href="counter2.html">媽媽基本資料</a>
-                        <a class="btn btn-link text-white-50" href="counter9.html">寶寶基本資料</a>
-                        <a class="btn btn-link text-white-50" href="counter13.html">客戶預約</a>
-                        <a class="btn btn-link text-white-50" href="counter16.html">使用者權限管理</a>
+                        <a class="btn btn-link text-white-50" href="Counter1.jsp">櫃檯人員首頁</a>
+                        <a class="btn btn-link text-white-50" href="Counter2.jsp">媽媽基本資料</a>
+                        <a class="btn btn-link text-white-50" href="Counter9.jsp">寶寶基本資料</a>
+                        <a class="btn btn-link text-white-50" href="Counter13.jsp">客戶預約</a>
+                        
                        
                        
                     </div>

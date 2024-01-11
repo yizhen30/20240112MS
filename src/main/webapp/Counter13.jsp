@@ -57,7 +57,7 @@
                      <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
                      <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
                      <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
-                     <a href="Counter16.jsp" class="nav-item nav-link">使用者權限管理</a>
+                     
                  </div>
              </div>
              <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
@@ -148,7 +148,7 @@
                         <a class="btn btn-link text-white-50" href="Counter2.jsp">媽媽基本資料</a>
                         <a class="btn btn-link text-white-50" href="Counter9.jsp">寶寶基本資料</a>
                         <a class="btn btn-link text-white-50" href="Counter13.jsp">客戶預約</a>
-                        <a class="btn btn-link text-white-50" href="Counter16.jsp">使用者權限管理</a>
+                        
                        
                     </div>
                     <div class="col-lg-3 col-md-2">

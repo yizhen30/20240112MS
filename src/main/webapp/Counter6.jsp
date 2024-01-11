@@ -61,7 +61,7 @@
                        <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
                        <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
                        <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
-                       <a href="Counter16.jsp" class="nav-item nav-link">使用者權限管理</a>
+                       
                         </div>
                     </div>
                     </div>
@@ -165,7 +165,7 @@
                         <a class="btn btn-link text-white-50" href="counter2.html">媽媽基本資料</a>
                         <a class="btn btn-link text-white-50" href="counter9.html">寶寶基本資料</a>
                         <a class="btn btn-link text-white-50" href="counter13.html">客戶預約</a>
-                        <a class="btn btn-link text-white-50" href="counter16.html">使用者權限管理</a>
+                        
                        
                        
                     </div>
