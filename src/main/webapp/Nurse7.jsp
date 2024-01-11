@@ -46,7 +46,7 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="nurse1.html" class="navbar-brand">
+            <a href="Nurse1.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-star me-3"></i>蘊星產後護理之家</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -96,7 +96,7 @@
 			    <th>出生年月日</th> 
 			    <td><%=rs.getString("MatHBD") %></td>
 			    <th>入住日期</th> 
-			    <td><%=rs2.getString("MatCheckIn.CheckInDate") %></td></table>  
+			    <td><%=rs1.getString("MatCheckIn.CheckInDate") %></td></table>  
 		
 		
          <div class="container-xxl py-3">
@@ -105,7 +105,7 @@
                     <div class="row g-0">
                         <div class="" data-wow-delay="0.1s">
                             <div class="h-100 d-flex flex-column justify-content-center p-5">
-                    		<form action="Nurse7Insert_DB.jsp" method="get">
+                    		<form action="Nurse7_DBInsertInto.jsp" method="get">
                     		<h5 align="right">
 						        <button type="submit" style="background:#FF9999"> 新增紀錄</button>
 						        <button type="button" style="background:#D4E1F5"> 列印</button>

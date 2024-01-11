@@ -15,7 +15,7 @@
 	String MmmHg =new String(request.getParameter("MmmHg"));
 	String MBSTime =new String(request.getParameter("MBSTime"));
 	String MBS =new String(request.getParameter("MBS"));
-	smt.executeUpdate("INSERT INTO AppointmentVisit(MTemp,MWeight,MmmHg,MBSTime,MBS) VALUES ('"+MTemp+"','"+MWeight+"','"+MmmHg+"','"+MBSTime+"','"+MBS+"')");
+	smt.executeUpdate("INSERT INTO HealthExMat(MTemp,MWeight,MmmHg,MBSTime,MBS) VALUES ('"+MTemp+"','"+MWeight+"','"+MmmHg+"','"+MBSTime+"','"+MBS+"')");
 	con.close();
 	response.sendRedirect("Index.jsp");
 	%>
