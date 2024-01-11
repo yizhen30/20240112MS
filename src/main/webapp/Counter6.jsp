@@ -2,7 +2,6 @@
     pageEncoding="utf-8"%>
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,7 +48,7 @@
 
         <!-- Navbar Start -->
         <nav class="navbar navbar-expand-lg bg-white navbar-light sticky-top px-4 px-lg-5 py-lg-0">
-            <a href="counter1.html" class="navbar-brand">
+            <a href="Counter1.jsp" class="navbar-brand">
                 <h1 class="m-0 text-primary"><i class="fa fa-star me-3"></i>蘊星產後護理之家</h1>
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -59,16 +58,16 @@
                 <div class="navbar-nav mx-auto">
                     
                    <div class="navbar-nav mx-auto">
-                       <a href="counter2.html" class="nav-item nav-link">媽媽基本資料</a>
-                    <a href="counter9.html" class="nav-item nav-link">寶寶基本資料</a>
-                    <a href="counter13.html" class="nav-item nav-link">客戶預約</a>
-                    <a href="counter16.html" class="nav-item nav-link">使用者權限管理</a>
+                       <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
+                       <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
+                       <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
+                       <a href="Counter16.jsp" class="nav-item nav-link">使用者權限管理</a>
                         </div>
                     </div>
                     </div>
               
                
-                <a href="index.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+                <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
        
         </nav>
         <!-- Navbar End -->
