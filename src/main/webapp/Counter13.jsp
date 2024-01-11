@@ -4,7 +4,7 @@
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
 <html>
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
    <title>櫃檯人員-客戶預約紀錄</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
