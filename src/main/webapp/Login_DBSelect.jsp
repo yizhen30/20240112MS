@@ -3,7 +3,7 @@
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
 <%
-	session.setAttribute("access", "n");
+	session.setAttribute("access", "n");	
 	if(request.getParameter("MatEmail") !=null &&
 		request.getParameter("MatID") !=null){
 		Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
@@ -19,7 +19,7 @@
 			session.setAttribute("accessID",members.getString("MatEmail"));
 			
 			//session.setMaxInactiveInterval(20); 自動登出
-			response.sendRedirect("Ms2.jsp");
+			response.sendRedirect("Ms1.jsp?");
 		}else
 			out.println("Login.jsp?status=loginerror");
 	}

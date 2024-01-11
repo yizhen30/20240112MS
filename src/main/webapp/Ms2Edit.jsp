@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
+<jsp:useBean id='objDBConfig' scope='application' class='hitstd.group.tool.database.DBConfig' />
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -55,14 +55,12 @@
                 <div class="navbar-nav mx-auto">
                     <a href="Ms2.jsp" class="nav-item nav-link">個人資料</a>
                     <a href="Ms3.jsp" class="nav-item nav-link">健康測量記錄</a>
-                    <a href="ms4.html" class="nav-item nav-link">寶寶線上探視</a>
-                    <a href="Ms5.jsp" class="nav-item nav-link">寶寶健康測量記錄</a>
-                    
-                        </div>
-                    </div>
-              
-               
-                <a href="index.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+                    <a href="Ms4.jsp" class="nav-item nav-link">寶寶線上探視</a>
+                    <a href="Ms5.jsp" class="nav-item nav-link">寶寶健康測量記錄</a>                    
+                </div>
+            </div>
+            
+            <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
        
         </nav>
         <!-- Navbar End -->
@@ -95,11 +93,10 @@
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
-                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-                            <form action="Ms2Edit_DBUpdate.jsp?Email=<%out.println(session.getAttribute("accessID"));%>" method="post" name="form" >
-                            <h2 style="color:black"align="center">
-                            <b><%out.println(rs.getString("MatName"));%> 的基本資料</b></h2><br> 
-                            
+                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">                                                      
+                          <h2 style="color:black"align="center">
+                          <b><%out.println(session.getAttribute("accessName"));%> 的基本資料</b></h2><br> 
+                          <form action="Ms2Edit_DBUpdate.jsp?MatEmail=<%out.println(session.getAttribute("accessID"));%>" method="post" name="form" >
                             <table style="none;width:100%">
                             	<tr>
 									<td>　</td>
@@ -111,18 +108,18 @@
 								</tr>
                             	
                             	<tr>
-								    <td>　</td><!-- 媽媽的姓名 -->
-								    <td><h5><b><label for="MatName">姓名</label></b></h5></td>
-								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatName"));%></h5></td>
+								    <td>　</td><!-- 媽媽的血型 -->
+								    <td><h5><b><label for="MatBT">血型</label></b></h5></td>
+								    <td><h5 style="color:#004B96;"><%out.println(rs1.getString("BloodType.BloodType"));%></h5></h5></td>
 								    <td>　</td><!-- 媽媽的緊急聯絡人 -->
 								    <td><h5><b><label for="MatFamName1">緊急聯絡人</label></b></h5></td>
 								    <td><h5><input type="text" name="MatFamName" value="<%=rs.getString("MatFamForm.MatFamName") %>" /></h5></td>
 								</tr>											
 							    
 							    <tr>
-							    	<td>　</td><!-- 媽媽的血型 -->
-								    <td><h5><b><label for="MatBT">血型</label></b></h5></td>
-								    <td><h5 style="color:#004B96;"><%out.println(rs1.getString("BloodType.BloodType"));%></h5></td>
+							    	<td>　</td><!-- 媽媽的身分證字號 -->
+								    <td><h5><b><label for="MatID">身分證字號</label></b></h5></td>
+								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatID"));%></h5></td>
 								    <td>　</td><!-- 媽媽與緊急聯絡人關係 -->
 								    <td><h5><b><label for="WithMatRel1">關係</label></b></h5></td>
 								    <td><h5><%=rs2.getString("Relationship.Relationship")%>
@@ -138,40 +135,32 @@
 							    </tr>											 
 							    
 							    <tr>
-								    <td>　</td><!-- 媽媽的身分證字號 -->
-								    <td><h5><b><label for="MatID">身分證字號</label></b></h5></td>
-								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatID"));%></h5></td>
+								    <td>　</td><!-- 媽媽的出生年月日 -->
+								    <td><h5><b><label for="MatHBD">出生年月日</label></b></h5></td>
+								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatHBD"));%></h5></td>
 								    <td>　</td><!-- 緊急聯絡人的身分證字號 -->
 								    <td><h5><b><label for="MatFamID1">身分證字號</label></b></h5></td>
 								    <td><h5><input type="text" name="MatFamID" value="<%=rs.getString("MatFamForm.MatFamID")%>" /></h5></td>
 							    </tr>		
 							    
 							    <tr>
-								    <td>　</td><!-- 媽媽的出生年月日 -->
-								    <td><h5><b><label for="MatHBD">出生年月日</label></b></h5></td>
-								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatHBD"));%></h5></td>
+								    <td>　</td><!-- 媽媽的聯絡電話 -->
+								    <td><h5><b><label for="MatPhone1">聯絡電話</label></b></h5></td>
+								    <td><h5><input type="text" name="MatPhone" value="<%=rs.getString("MatPhone") %>" /></h5></td>
 								    <td>　</td><!-- 緊急聯絡人的電話 -->
 								    <td><h5><b><label for="MatFamPhone1">聯絡電話</label></b></h5></td>
 								    <td><h5><input type="text" name="MatFamPhone" value="<%=rs.getString("MatFamForm.MatFamPhone")%>" /></h5></td>
 							    </tr> 
 							    
 							    <tr>
-								    <td>　</td><!-- 媽媽的聯絡電話 -->
-								    <td><h5><b><label for="MatPhone1">聯絡電話</label></b></h5></td>
-								    <td><h5><input type="text" name="MatPhone" value="<%=rs.getString("MatPhone")%>" /></h5></td>
+								    <td>　</td><!-- 媽媽的電子郵件 -->
+								    <td><h5><b><label for="MatEmail">電子郵件</label></b></h5></td>
+								    <td><h5 style="color:#004B96;"><%out.println(rs.getString("MatEmail"));%></h5></td>
 								    <td>　</td><!-- 緊急聯絡人的電子郵件 -->
 								    <td><h5><b><label for="MatFamEmail1">電子郵件</label></b></h5></td>
 								    <td><h5><input type="text" name="MatFamEmail" value="<%=rs.getString("MatFamForm.MatFamEmail")%>" /></h5></td>
 							    </tr>		
 							    
-							    <tr>
-								    <td>　</td><!-- 媽媽的電子郵件 -->
-								    <td><h5><b><label for="MatEmail1">電子郵件</label></b></h5></td>
-								    <td><h5><input type="text" name="MatEmail" value="<%=rs.getString("MatEmail")%>" /></h5></td>
-								    <td>　</td>
-									<td>　</td>									    
-								</tr>
-								    
 								<tr>
 									 <td>　</td><!-- 媽媽的生產方式 -->
 									 <td><h5><b><label for="ProMethods">生產方式</label></b></h5></td>
@@ -236,13 +225,11 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">系統導覽</h3>
-                        <a class="btn btn-link text-white-50" href="ms1.html">產婦首頁</a>
-                        <a class="btn btn-link text-white-50" href="ms2.html">個人資料</a>
-                        <a class="btn btn-link text-white-50" href="ms3.html">健康測量記錄</a>
-                        <a class="btn btn-link text-white-50" href="ms4.html">寶寶線上探視</a>
-                        <a class="btn btn-link text-white-50" href="ms5.html">寶寶健康測量紀錄</a>
-                       
-                       
+	                        <a class="btn btn-link text-white-50" href="Ms1.jsp">媽媽首頁</a>
+	                        <a class="btn btn-link text-white-50" href="Ms2.jsp">我的資料</a>
+	                        <a class="btn btn-link text-white-50" href="Ms3.jsp">健康測量記錄</a>
+	                        <a class="btn btn-link text-white-50" href="Ms4.jsp">寶寶線上探視</a>
+	                        <a class="btn btn-link text-white-50" href="Ms5.jsp">寶寶健康測量紀錄</a>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h3 class="text-white mb-4">Photo </h3>
@@ -264,17 +251,14 @@
                 </div>
             </div>
             <div class="container bg-dark">
-                <div class="copyright">
-                    <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                            &copy; <a class="border-bottom" href="#">蘊星產後護理之家</a>, All Right Reserved. 
-							
-							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-							Designed By <a class="border-bottom" href="https://htmlcodex.com">蘊星產後護理之家</a>
-                        </div>
-                        
-                        </div>
-                    </div>
+	            <div class="copyright">
+		            <div class="row">
+			            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+				            &copy;蘊星產後護理之家, All Right Reserved. 
+							Designed By <a class="border-bottom" href="#">蘊星產後護理之家</a>
+			            </div>
+		            </div>
+	            </div>
             </div>
             </div>
         </div>

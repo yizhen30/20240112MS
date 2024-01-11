@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
-<jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
+<%@page import="java.io.*,java.util.*"%>
+<jsp:useBean id='objDBConfig' scope='application' class='hitstd.group.tool.database.DBConfig' />
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -38,16 +39,17 @@
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= con.createStatement();
-			String MatFamName = new String(request.getParameter("MatFamName"));
+			//String MatFamName = new String(request.getParameter("MatFamName"));
 			String WithMatRel = new String(request.getParameter("WithMatRel"));
-			String MatFamID = new String(request.getParameter("MatFamID"));
-			String MatFamPhone = new String(request.getParameter("MatFamPhone"));
+			//String MatFamID = new String(request.getParameter("MatFamID"));
+			//String MatFamPhone = new String(request.getParameter("MatFamPhone"));
+			//String MatPhone = request.getParameter("MatPhone");
 			String MatPhone = new String(request.getParameter("MatPhone"));
-			String MatFamEmail = new String(request.getParameter("MatFamEmail"));
-			String MatEmail = new String(request.getParameter("MatEmail"));
+			//String MatFamEmail = new String(request.getParameter("MatFamEmail"));
+			//String MatEmail = request.getParameter("MatEmail");
 			String DiePre = new String(request.getParameter("DiePre"));
-			smt.executeUpdate("UPDATE MatForm SET WithMatRel ='" + WithMatRel+"', MatPhone ='" + MatPhone +"', MatEmail ='" + MatEmail+"', DiePre ='" + DiePre+"' WHERE creatorEmail ='" + session.getAttribute("accessID")+"'");
-			smt.executeUpdate("UPDATE MatFamForm SET MatFamName ='" + MatFamName+"', MatFamID ='" + MatFamID +"', MatFamPhone ='" + MatFamPhone+"', MatFamEmail ='" + MatFamEmail+"' WHERE creatorEmail ='" + session.getAttribute("accessID")+"'");
+			String updateQuery = "UPDATE MatForm SET WithMatRel ='" + WithMatRel+"', MatPhone ='" + MatPhone +"', DiePre ='" + DiePre+"' WHERE MatEmail ='" + session.getAttribute("accessID")+"'";
+			//smt.executeUpdate("UPDATE MatFamForm SET MatFamName ='" + MatFamName+"', MatFamID ='" + MatFamID +"', MatFamPhone ='" + MatFamPhone+"', MatFamEmail ='" + MatFamEmail+"' WHERE MatEmail ='" + request.getParameter("accessID")+"'");
 			response.sendRedirect("Ms2.jsp?MatEmail="+session.getAttribute("accessID")+"");
 		%>
 </body>
