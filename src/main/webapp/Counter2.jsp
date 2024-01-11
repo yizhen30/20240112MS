@@ -11,6 +11,7 @@
 		ResultSet matts = smt.executeQuery(getmatdata);
 	if(matts.next()){
 		session.setAttribute("UserID",request.getParameter("SearchID"));
+		session.setAttribute("UserNO",matts.getString("Mat_SeqNO"));
 		//String redirectPage = paperrs.getString("RedirectPage");
 		response.sendRedirect("Counter3.jsp");
 	}else
