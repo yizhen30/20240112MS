@@ -112,9 +112,9 @@
 						   <tr><td>房型</td>
 						    <td><select  name="RoomType" class="form-select border-2" width="300" style="width: 260px"required>
 					              <option selected>原房型為<%out.println(mmc1.getString("RoomType"));%>，請選擇：</option>
-		                          <option value="R1">景觀房</option>
-		                          <option value="R2">尊爵房</option>
-		                          <option value="R3">VIP房</option>
+		                          <option value="1">景觀房</option>
+		                          <option value="2">尊爵房</option>
+		                          <option value="3">VIP房</option>
 		                          </select>
 		                    </td>
 		                   </tr>
