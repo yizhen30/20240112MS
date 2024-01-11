@@ -166,7 +166,7 @@
 						    <td >緊急聯絡人姓名</td>
 						    <td ><input name="MatFamForm.MatFamName" value="<%out.println(mm.getString("MatFamForm.MatFamName"));%>"  size="30" required ></td>
 						    <td>緊急聯絡人聯絡電話</td>
-						    <td><input name="MatFamForm.MatFamPhone" value="<%out.println(mm.getString("MatFamForm.MatFamPhone"));%>" size="30" maxlength="10" placeholder="09XXXXXXXX" required ></td>
+						    <td><input name="MatFamForm.ConPhone" value="<%out.println(mm.getString("MatFamPhone"));%>" size="30" maxlength="10" placeholder="09XXXXXXXX" required ></td>
 						   </tr>
 						    <tr>
 						    <td>緊急聯絡人關係</td>
