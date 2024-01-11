@@ -80,8 +80,7 @@
                         <div class= data-wow-delay="0.1s" style="min-height: 300px;">   
                           <table style="none;width:100%">          
 	                          <tr>
-	                          	<th>　</th>
-	                          	<th>　</th>
+	                          	
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
@@ -95,8 +94,7 @@
 								<th>　</th>
 							  </tr>
 	                          <tr>
-	                          	<th>　</th>
-	                          	<th>　</th>
+	                          	
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
@@ -107,7 +105,7 @@
 	                          	<th>　</th>
 	                          	<th>　</th>
 								<th>
-									<video width="320" height="240" controls autoplay>
+									<video width="900" height="500" controls autoplay>
 										<source src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" type="video/mp4">
 									</video>
 								</th>
