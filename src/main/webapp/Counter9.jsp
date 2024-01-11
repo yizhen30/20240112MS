@@ -88,17 +88,7 @@
 <br><h2 align="center">寶寶資料查詢</h2><br>
       <h5>&emsp; &emsp;寶寶代碼: <input type="text" placeholder="輸入寶寶代碼..." name="SearchBaby" required> <button type="Submit" > 確認</button></a>  <a href="counter12.html"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
          <div class="container-xxl py-3">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class= data-wow-delay="0.1s" style="min-height: 350px;">
-                           
-     
-
-                    </div>
-                </div>
-            </div>
-        </div>
+            
         </div>
 </form>
 

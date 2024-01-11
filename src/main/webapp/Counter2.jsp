@@ -93,16 +93,7 @@
 		
 		</form>
  <div class="container-xxl py-0">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class= data-wow-delay="0.1s" style="min-height: 300px;">
-                          
-     
-
-                    </div>
-                </div>
-            </div>
+            
         </div>
 
         <!-- Footer Start -->
