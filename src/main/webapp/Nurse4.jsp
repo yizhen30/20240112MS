@@ -84,7 +84,7 @@
 			rs4.next();
 		%>
 		<br><h2 align="center">媽媽健康測量記錄</h2>
-		  <h5>&emsp;媽媽代碼 <input type="text"><a href="nurse5.html"> <button type="button" href="Nurse5.jsp"> 確認</button></a></h5>      
+		  <h5>&emsp;媽媽代碼 <input type="text"><a href="Nurse5.jsp"> <button type="button" href="Nurse5.jsp"> 確認</button></a></h5>      
 
          <div class="container-xxl py-3">
             <div class="container">
