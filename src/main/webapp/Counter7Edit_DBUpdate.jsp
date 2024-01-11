@@ -45,19 +45,19 @@
 			Statement smt2= con.createStatement();
 			String FamName = new String(request.getParameter("MatFamForm.MatFamName").getBytes("ISO-8859-1"));
 			String MatFamPhone = new String(request.getParameter("MatFamForm.ConPhone").getBytes("ISO-8859-1"));
-			//String MatName = new String(request.getParameter("MatName").getBytes("ISO-8859-1"));
-			//String MatBT = new String(request.getParameter("MatBT").getBytes("ISO-8859-1"));
-			//String MatHBD_Edit = new String(request.getParameter("MatHBD").getBytes("ISO-8859-1"));
-			//String MatPhone = new String(request.getParameter("MatPhone").getBytes("ISO-8859-1"));
+			String MatName = new String(request.getParameter("MatName").getBytes("ISO-8859-1"));
+			String MatBT = new String(request.getParameter("MatBT").getBytes("ISO-8859-1"));
+			String MatHBD_Edit = new String(request.getParameter("MatHBD").getBytes("ISO-8859-1"));
+			String MatPhone = new String(request.getParameter("MatPhone").getBytes("ISO-8859-1"));
 			//String Email = new String(request.getParameter("MatEmail").getBytes("ISO-8859-1"));
-			//String RelWithMF = new String(request.getParameter("MatForm.RelWithMF").getBytes("ISO-8859-1"));
-			//String ProMethods = new String(request.getParameter("ProMethods").getBytes("ISO-8859-1"));
-			//String DiePre = new String(request.getParameter("DiePre").getBytes("ISO-8859-1"));
-			//String MatID_Edit = new String(request.getParameter("MatID_Edit"));
-			//smt1.executeUpdate("UPDATE MatFamForm SET MatFamForm.MatFamName ='" +FamName+ "', MatFamForm.MatFamPhone ='" + MatFamPhone+"' WHERE MatID='" + session.getAttribute("UserID")+"'");
-			//smt2.executeUpdate("UPDATE MatForm SET MatForm.WithMatRel='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.MatPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.MatEmail ='" + Email+"', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
-//Test  	smt2.executeUpdate("UPDATE MatForm SET MatForm.WithMatRel='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.MatPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.MatEmail ='" + Email+"', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
+			String RelWithMF = new String(request.getParameter("MatForm.RelWithMF").getBytes("ISO-8859-1"));
+			String ProMethods = new String(request.getParameter("ProMethods").getBytes("ISO-8859-1"));
+			String DiePre = new String(request.getParameter("DiePre").getBytes("ISO-8859-1"));
+			String MatID_Edit = new String(request.getParameter("MatID_Edit"));
 			smt1.executeUpdate("UPDATE MatFamForm SET MatFamForm.MatFamName ='" +FamName+ "', MatFamForm.MatFamPhone ='" + MatFamPhone+"' WHERE MatID='" + session.getAttribute("UserID")+"'");
+			//smt2.executeUpdate("UPDATE MatForm SET MatForm.WithMatRel='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.MatPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.MatEmail ='" + Email+"', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
+			smt2.executeUpdate("UPDATE MatForm SET MatForm.WithMatRel='" + RelWithMF + "', MatForm.MatName='" + MatName + "', MatForm.MatPhone='" + MatPhone + "', MatForm.ProMethods='" + ProMethods + "', MatForm.DiePre='" + DiePre + "', MatForm.MatBT='" + MatBT + "', MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
+//Test		smt1.executeUpdate("UPDATE MatFamForm SET MatFamForm.MatFamName ='" +FamName+ "', MatFamForm.MatFamPhone ='" + MatFamPhone+"' WHERE MatID='" + session.getAttribute("UserID")+"'");
 			response.sendRedirect("Counter7.jsp?MatID="+request.getParameter("MatID")+"");
 		%>
 		

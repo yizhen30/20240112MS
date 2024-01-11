@@ -103,7 +103,7 @@
 		<table style="width:30%" align="right"> 
 			<tr>
 			<th>入住日期</th>
-			<td><%out.println(mmc.getString("MatCheckIn.CheckInDate"));%></td></tr>
+			<td><%out.println(mmc.getString("CheckInDate"));%></td></tr>
 		</table>
 	   <form action="Counter7Edit_DBUpdate.jsp?MatID=<%=request.getParameter("MatID")%>" method="post" name="form">
 	          <div class="container">
