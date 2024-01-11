@@ -18,10 +18,10 @@
 	String VisitDate = new String(request.getParameter("VisitDate"));
 	String VisitTime =new String(request.getParameter("VisitTime")); 
 	String Companions =new String(request.getParameter("Companions"));
-	String Parity =new String(request.getParameter("Parity"));
-	String ParityOther =new String(request.getParameter("ParityOther"));
+	//String Parity =new String(request.getParameter("Parity"));
+	//String ParityOther =new String(request.getParameter("ParityOther"));
 	String Message =new String(request.getParameter("Message"));
-	smt.executeUpdate("INSERT INTO AppointmentVisit(VisitName,VisitEmail,VisitPhone,DueDate,StayingDay,VisitDate,VisitTime,Companions,Parity,ParityOther,Message) VALUES ('"+VisitName+"','"+VisitEmail+"','"+VisitPhone+"','"+DueDate+"','"+StayingDay+"','"+VisitDate+"','"+VisitTime+"','"+Companions+"','"+Parity+"','"+ParityOther+"','"+Message+"')");
+	smt.executeUpdate("INSERT INTO AppointmentVisit(VisitName,VisitEmail,VisitPhone,DueDate,StayingDay,VisitDate,VisitTime,Companions,Message) VALUES ('"+VisitName+"','"+VisitEmail+"','"+VisitPhone+"','"+DueDate+"','"+StayingDay+"','"+VisitDate+"','"+VisitTime+"','"+Companions+"','"+Message+"')");
 	con.close();
 	response.sendRedirect("Index.jsp");
 	%>

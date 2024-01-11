@@ -177,7 +177,7 @@
 	                                </div>
                                 <!--　 －－－－　 -->
                                 
-                                <!--　 　胎次　　 -->
+                                <!--　 　胎次　　
 	                                <div class="col-12 col-sm-6">
 	                                    <label>胎次</label>
 	                                    <select class="form-select border-0" name="Parity" style="height: 55px;">
@@ -188,28 +188,28 @@
 	                                        <option value="4">其他</option>
 	                                    </select>
 	                                </div>
-                                <!--　 －－－－　 -->
+                                　 －－－－　 -->
                                 
                                 <!--　想入住天數  -->
                                 	<div class="col-12 col-sm-6">
 	                                    <label>想入住天數</label>
 	                                    <select class="form-select border-0" name="StayingDay" style="height: 55px;">
 	                                        <option selected>請下拉選擇</option>
-	                                        <option value="1">15天</option>
-	                                        <option value="2">28天</option>
-	                                        <option value="3">32天</option>
-	                                        <option value="4">尚未決定</option>
+	                                        <option value="A">15天</option>
+	                                        <option value="B">20天</option>
+	                                        <option value="C">30天</option>
+	                                        <option value="D">尚未決定</option>
 	                                    </select>
 	                                </div>
                                 <!--　 －－－－　 -->
                                 
-                                <!--　胎次＿其他  -->
+                                <!--　胎次＿其他  
 	                                <div class="col-12 col-sm-6">
 	                                    <label>胎次＿其他</label>
 	                                    <input type="text" class="form-control border-0" 
 	                                    name="ParityOther" style="height: 55px;">
 	                                </div>
-                                <!--　 －－－－　 -->
+                                　 －－－－　 -->
                                 
                                 <!--　 其他留言　 -->
                                 	<div class="col-12">

@@ -86,22 +86,6 @@
         </nav>
         <!-- Navbar End -->
 
-
-        <!-- Page Header End -->
-        <div class="container-xxl py-5 page-header position-relative mb-5">
-            <div class="container py-5">
-                <h1 class="display-2 text-white animated slideInDown mb-4">登入</h1>
-                <nav aria-label="breadcrumb animated slideInDown">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">登入</li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-        <!-- Page Header End -->
-
-
         <!--  帳號登入區  -->
         <form method="POST" action="Login_DBSelect.jsp">
 	        <div class="container-xxl py-5">
