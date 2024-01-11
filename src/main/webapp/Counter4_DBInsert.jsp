@@ -27,8 +27,8 @@
 	//smt.executeUpdate("INSERT INTO MatForm(MatName,MatID,MatHBD,MatBT,ConPhone,Email,ConAddress,ModPro,Diepre,MatFam_SeqNO,RelWithEC,MatFamPhone) VALUES ('"+MatName+"','"+MatID+"','"+MatHBD+"','"+MatBT+"','"+ConPhone+"','"+Email+"','"+ConAddress+"','"+ModPro+"','"+Diepre+"','"+MatFam_SeqNO+"','"+RelWithEC+"','"+MatFamPhone+"')");
 	//smt.executeUpdate("INSERT INTO MatForm(MatName,MatID,MatHBD,MatBT,ConPhone,Email,ConAddress,ModPro,Diepre,RelWithEC,MatFamPhone) VALUES ('"+MatName+"','"+MatID+"','"+MatHBD+"','"+MatBT+"','"+ConPhone+"','"+Email+"','"+ConAddress+"','"+ModPro+"','"+Diepre+"','"+RelWithEC+"','"+MatFamPhone+"')");
 	//smt.executeUpdate("INSERT INTO MatForm(MatName,MatBT,MatID,MatHBD,ConPhone,Email,ConAddress,RelWithMF,ModPro,Diepre) VALUES ('"+MatName+"','"+MatBT+"','"+MatID+"','"+MatHBD+"','"+ConPhone+"','"+Email+"','"+ConAddress+"','"+RelWithMF+"','"+ModPro+"','"+Diepre+"')");
-	smt.executeUpdate("INSERT INTO MatForm(MatName,MatBT,MatID,MatHBD,ConPhone,Email,RelWithMF,ModPro,Diepre,Remark) VALUES ('"+MatName+"','"+MatBT+"','"+MatID+"','"+MatHBD+"','"+ConPhone+"','"+Email+"','"+RelWithMF+"','"+ModPro+"','"+Diepre+"','"+Remark+"')");
-	smt1.executeUpdate("INSERT INTO MatFamForm(MatFamName,ConPhone,MatID) VALUES ('"+MatFam_Name+"','"+MatFamPhone+"','"+MatID+"')");
+	smt.executeUpdate("INSERT INTO MatForm(MatName,MatBT,MatID,MatHBD,MatPhone,MatEmail,WithMatRel,ProMethods,Diepre) VALUES ('"+MatName+"','"+MatBT+"','"+MatID+"','"+MatHBD+"','"+ConPhone+"','"+Email+"','"+RelWithMF+"','"+ModPro+"','"+Diepre+"')");
+	smt1.executeUpdate("INSERT INTO MatFamForm(MatFamName,MatFamPhone,MatID) VALUES ('"+MatFam_Name+"','"+MatFamPhone+"','"+MatID+"')");
 	smt2.executeUpdate("INSERT INTO MatCheckIn(MatID) VALUES ('"+MatID+"')");
 	//smtA.executeUpdate("UPDATE MatForm SET MatForm.RelWithEC = MatFamForm.MatFam_SeqNO WHERE MatForm.MatID = MatFamForm.MatID ");
 	con.close();

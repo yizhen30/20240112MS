@@ -1,26 +1,29 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
+
 <%
 	if(request.getParameter("SearchID") !=null){
     	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 		Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 		Statement smt= con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-		String getmatdata = "SELECT * FROM MatForm WHERE MatID='"+request.getParameter("SearchID")+"'";
+		String getmatdata = "SELECT * FROM BabyForm WHERE Baby_SeqNO='"+request.getParameter("SearchBaby")+"'";
 		ResultSet matts = smt.executeQuery(getmatdata);
 	if(matts.next()){
-		session.setAttribute("UserID",request.getParameter("SearchID"));
+		session.setAttribute("BabyID",request.getParameter("SearchBaby"));
 		//String redirectPage = paperrs.getString("RedirectPage");
 		response.sendRedirect("Counter10.jsp");
 	}else
-		out.println("錯誤身份證字號，請重新輸入");
+		out.println("錯誤，請重新輸入");
 }
 %>
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>櫃檯人員-寶寶基本資料</title>
+    <meta charset="utf-8">
+    <title>櫃台人員-寶寶基本資料</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -69,39 +72,37 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                     <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
-                     <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
-                     <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
-                     <a href="Counter16.jsp" class="nav-item nav-link">使用者權限管理</a>
-                 </div>
-             </div>
-             <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+                        <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
+                    <a href="counter9.html" class="nav-item nav-link">寶寶基本資料</a>
+                    <a href="counter13.html" class="nav-item nav-link">客戶預約</a>
+                    <a href="counter16.html" class="nav-item nav-link">使用者權限管理</a>
+                        </div>
+                    </div>
+              
+               
+                <a href="index.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+       
         </nav>
         <!-- Navbar End -->
-        
-         <!-- 媽媽查詢 -->
-		<form method="POST" action="Counter9_DB.jsp">
-		<br><h2 align="center">媽媽基本資料查詢</h2><br>
-		      
-		      <h5>&emsp; &emsp; 媽媽身分證字號 <input type="text" placeholder="輸入媽媽身分證字號..." name="SearchID" required> 
-		      <button type="submit" name="searchBtn" value="查詢" > 確認</button>  <a href="Counter4.jsp"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
-		         <div class="container-xxl py-3">
-		            <div class="container">
-		                <div class="bg-light rounded">
-		                    <div class="row g-0">
-		                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-		                           
-		     
-		
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		</div>
-		</form>
+<form method="POST" action="Counter9_DBSelect.jsp">
+<br><h2 align="center">寶寶資料查詢</h2><br>
+      <h5>&emsp; &emsp;寶寶代碼: <input type="text" placeholder="輸入寶寶代碼..." name="SearchBaby" required> <button type="Submit" > 確認</button></a>  <a href="counter12.html"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
+         <div class="container-xxl py-3">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class= data-wow-delay="0.1s" style="min-height: 350px;">
+                           
+     
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
 
 
-        <!-- Footer Start -->
+       <!-- Footer Start -->
         <div class="container-fluid bg-dark  text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
                 <div class="container py-1 ">
                 <div class="row g-5 ">
@@ -119,11 +120,11 @@
                     </div>
                     <div class="col-lg-3 col-md-2">
                         <h3 class="text-white mb-4">系統導覽</h3>
-                        <a class="btn btn-link text-white-50" href="Counter1.jsp">櫃檯人員首頁</a>
-                        <a class="btn btn-link text-white-50" href="Counter2.jsp">媽媽基本資料</a>
-                        <a class="btn btn-link text-white-50" href="Counter9.jsp">寶寶基本資料</a>
-                        <a class="btn btn-link text-white-50" href="Counter13.jsp">客戶預約</a>
-                        <a class="btn btn-link text-white-50" href="Counter16.jsp">使用者權限管理</a>
+                       <a class="btn btn-link text-white-50" href="counter1.html">櫃檯人員首頁</a>
+                        <a class="btn btn-link text-white-50" href="counter2.html">媽媽基本資料</a>
+                        <a class="btn btn-link text-white-50" href="counter9.html">寶寶基本資料</a>
+                        <a class="btn btn-link text-white-50" href="counter13.html">客戶預約</a>
+                        <a class="btn btn-link text-white-50" href="counter16.html">使用者權限管理</a>
                        
                        
                     </div>
@@ -149,18 +150,25 @@
             <div class="container bg-dark">
                 <div class="copyright">
                     <div class="row">
-                        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-				            &copy;蘊星產後護理之家, All Right Reserved. 
-							Designed By <a class="border-bottom" href="#">蘊星產後護理之家</a>
-			            </div>
+                        <div class="col-md-6  text-center text-md-start mb-3 mb-md-0"><br>
+                            &copy; <a class="border-bottom" href="#">蘊星產後護理之家</a>, All Right Reserved. 
+							
+							<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+							Designed By <a class="border-bottom" href="https://htmlcodex.com">蘊星產後護理之家</a>
+                        </div>
+                        
+                        </div>
                     </div>
                 </div>
-                </div>
             </div>
-        
+        </div>
         <!-- Footer End -->
-		<!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+
+
+        
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -171,6 +179,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
 </body>
+
 </html>

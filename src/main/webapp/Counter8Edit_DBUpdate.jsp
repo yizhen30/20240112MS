@@ -62,10 +62,10 @@
 			Statement smt= con.createStatement();
 			//Statement smt1= con.createStatement();
 			String RoomType = new String(request.getParameter("RoomType"));
-			//String RoomNo = new String(request.getParameter("RoomNo"));
-			//String CheckInDate = new String(request.getParameter("CheckInDate"));
-			//String CheckOutDate = new String(request.getParameter("CheckOutDate"));
-			//String Day = new String(request.getParameter("Day"));
+			String RoomNo = new String(request.getParameter("RoomNo"));
+			String CheckInDate = new String(request.getParameter("CheckInDate"));
+			String CheckOutDate = new String(request.getParameter("CheckOutDate"));
+			String Day = new String(request.getParameter("Day"));
 			smt.executeUpdate("UPDATE MatCheckIn SET MatCheckIn.RoomType ='" +RoomType+ "', MatcheckIn.RoomNo ='" + RoomNo+"',MatCheckIn.CheckInDate='"+CheckInDate+"',MatCheckIn.CheckOutDate='"+CheckOutDate+"',MatCheckIn.Day='"+Day+"' WHERE MatCheckIn.MatID ='" + session.getAttribute("UserID")+"'");
 //test		smt.executeUpdate("UPDATE MatCheckIn SET MatCheckIn.RoomType ='" +RoomType+ "' WHERE MatCheckIn.MatID ='" + session.getAttribute("UserID")+"'");
 			//smt1.executeUpdate("UPDATE MatForm SET MatForm.MatHBD ='" + MatHBD_Edit+"'WHERE MatID ='" + session.getAttribute("UserID")+"'");
