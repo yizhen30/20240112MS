@@ -14,6 +14,7 @@
 			session.setAttribute("access","y");
 			//session.setAttribute("accessName",members.getString("MatName"));
 			session.setAttribute("UserID",members.getString("MatID"));
+			session.setAttribute("UserNO",members.getString("Mat_SeqNO"));
 			response.sendRedirect("Counter3.jsp");
 		}else
 			out.println("錯誤，請重新輸入身分證字號。");
