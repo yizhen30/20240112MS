@@ -4,7 +4,7 @@
 <jsp:useBean id='objDBConfig' scope='application' class='hitstd.group.tool.database.DBConfig' />
 <html>
 <head>
-	<title>家屬首頁</title>
+	<title>家屬首頁-寶寶健康測量紀錄</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -64,29 +64,76 @@
        
         </nav>
         <!-- Navbar End -->
-
-
-       
+		<%request.setCharacterEncoding("UTF-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			Statement smt= con.createStatement();
+			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql1 = "SELECT * FROM HealthExBaby";
+			String sql2 = "SELECT * FROM PoopCondition";
+			String sql3 = "SELECT * FROM PoopColor";
+			String sql4 = "SELECT * FROM StaffForm";
+			ResultSet rs = smt.executeQuery(sql);
+			ResultSet rs1 = smt.executeQuery(sql1);
+			ResultSet rs2 = smt.executeQuery(sql2);
+			ResultSet rs3 = smt.executeQuery(sql3);
+			ResultSet rs4 = smt.executeQuery(sql4);
+			rs.next();
+			rs1.next();
+			rs2.next();
+			rs3.next();
+			rs4.next();
+		%>
+		
+		<br><h2 style="color:black"align="center"><b>寶寶健康測量記錄</b></h2>
+		
 
          <div class="container-xxl py-3">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="img/baby5.jpg" style="object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4"align="center">歡迎登入系統</h1>
-                                <p class="mb-4"align="center">
-                                                        </div>
+                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
+                                               
+                        <table style="width:100%">
+						  <tr>
+						    <th>寶寶姓名</th>
+						    <th>體溫</th>
+						    <th>體重</th>
+						    <th>身高</th>
+						    <th>心跳指數</th>
+						    <th>黃疸指數</th>
+						    <th>喝奶量</th>
+						    <th>排泄量</th>
+						    <th>便便狀況</th>
+						    <th>便便顏色</th>
+						    <th>備註</th>
+						    <th>紀錄日期</th>
+						    <th>紀錄時間</th>
+						    <th>護理人員</th>
+						  </tr>
+						  
+						  <tr>
+						  	<th><%=rs.getString("BabyName")%></th>
+						  	<td><%=rs1.getString("BTemp")%>°C</td>
+						    <td><%=rs1.getString("BWeight")%>g</td>
+						    <td><%=rs1.getString("BHeight")%>cm</td>
+						    <td><%=rs1.getString("Heartbeat")%></td>
+						    <td><%=rs1.getString("Jaundice")%>mg/dl</td>
+						    <td><%=rs1.getString("BDrink")%></td>
+						    <td><%=rs1.getString("Excretion")%></td>
+						    <td><%=rs2.getString("PoopCondition.PoopCondition")%></td>
+						    <td><%=rs3.getString("PoopColor.PoopColor")%></td>
+						    <td><%=rs1.getString("BRemark")%></td>
+						    <td><%=rs1.getString("RecordDate")%></td>
+						    <td><%=rs1.getString("RecordTime")%></td>
+						    <td><%=rs4.getString("StaffForm.StaffName")%></td>
+						  </tr>
+						</table>  
                     </div>
                 </div>
             </div>
         </div>
-
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">

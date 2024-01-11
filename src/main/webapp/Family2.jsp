@@ -4,7 +4,7 @@
 <jsp:useBean id='objDBConfig' scope='application' class='hitstd.group.tool.database.DBConfig' />
 <html>
 <head>
-	<title>家屬首頁</title>
+	<title>家屬首頁-寶寶線上探視</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -64,30 +64,57 @@
        
         </nav>
         <!-- Navbar End -->
-
-
-       
-
-         <div class="container-xxl py-3">
+<%request.setCharacterEncoding("UTF-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			Statement smt= con.createStatement();
+			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			ResultSet rs = smt.executeQuery(sql);
+			rs.next();
+		%>
+         <div class="container-xxl py-2">
             <div class="container">
                 <div class="bg-light rounded">
                     <div class="row g-0">
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s" style="min-height: 400px;">
-                            <div class="position-relative h-100">
-                                <img class="position-absolute w-100 h-100 rounded" src="img/baby5.jpg" style="object-fit: cover;">
-                            </div>
-                        </div>
-                        <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="h-100 d-flex flex-column justify-content-center p-5">
-                                <h1 class="mb-4"align="center">歡迎登入系統</h1>
-                                <p class="mb-4"align="center">
-                                                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
+                        <div class= data-wow-delay="0.1s" style="min-height: 300px;">   
+                          <table style="none;width:100%">          
+	                          <tr>
+	                          	
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+								<th>　</th>
+								<th>　</th>
+							  </tr>
+	                          <tr>
+	                          	
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+	                          	<th>　</th>
+								<th>
+									<video width="900" height="500" controls autoplay>
+										<source src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" type="video/mp4">
+									</video>
+								</th>
+								<th>　</th>
+							  </tr>
+						  </table>
+              			</div>
+                	</div>
+                	</div>
         <!-- Footer Start -->
         <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
             <div class="container py-5">
