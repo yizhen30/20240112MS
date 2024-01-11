@@ -71,7 +71,7 @@
 	    	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection conA=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= conA.createStatement();
-			smt.executeUpdate("UPDATE MatForm SET RelWithEC = (SELECT MatFam_SeqNO FROM MatFamForm WHERE MatForm.MatID = MatFamForm.MatID)");
+			smt.executeUpdate("UPDATE MatForm SET MatFamName = (SELECT MatFam_SeqNO FROM MatFamForm WHERE MatForm.MatID = MatFamForm.MatID)");
 			Statement smtA= conA.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			String getmatdata = "SELECT * FROM MatForm WHERE MatID='"+request.getParameter("MatID")+"'";
 			ResultSet matts = smtA.executeQuery(getmatdata);
@@ -129,9 +129,9 @@
 			  		  <tr>
 			  		  <td><select  name="RoomType" class="form-select border-2" style="height: 40px;width:250px;"required>
 			              <option selected></option>
-                          <option value="R1">景觀房</option>
-                          <option value="R2">尊爵房</option>
-                          <option value="R3">VIP房</option>
+                          <option value="1">景觀房</option>
+                          <option value="2">尊爵房</option>
+                          <option value="3">VIP房</option>
                           </select></td>
 			   		  <td><select  name="RoomNo" class="form-select border-2" style="height: 40px;width:250px;"required>
 			              <option selected></option>
