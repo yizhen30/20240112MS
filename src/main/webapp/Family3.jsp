@@ -69,7 +69,7 @@
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO";
 			String sql1 = "SELECT * FROM HealthExBaby";
 			String sql2 = "SELECT * FROM PoopCondition";
 			String sql3 = "SELECT * FROM PoopColor";

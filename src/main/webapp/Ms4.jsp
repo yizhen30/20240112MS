@@ -96,11 +96,7 @@
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
-								<th>
-									
-										<img src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" width="85%">
-									
-								</th>
+								<th><img src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" width="85%"></th>
 								<th>　</th>
 							  </tr>
 						  </table>

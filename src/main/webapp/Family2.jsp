@@ -64,12 +64,12 @@
        
         </nav>
         <!-- Navbar End -->
-<%request.setCharacterEncoding("UTF-8"); %>
+		<%request.setCharacterEncoding("UTF-8"); %>
 		<%
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
 			Statement smt= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO where MatForm.MatEmail ='" +session.getAttribute("accessID")+"'";
+			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO";
 			ResultSet rs = smt.executeQuery(sql);
 			rs.next();
 		%>
@@ -80,10 +80,6 @@
                         <div class= data-wow-delay="0.1s" style="min-height: 300px;">   
                           <table style="none;width:100%">          
 	                          <tr>
-	                          	
-	                          	<th>　</th>
-	                          	<th>　</th>
-	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
@@ -94,21 +90,13 @@
 								<th>　</th>
 							  </tr>
 	                          <tr>
-	                          	
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
 	                          	<th>　</th>
-	                          	<th>　</th>
-	                          	<th>　</th>
-	                          	<th>　</th>
-								<th>
-									<video width="900" height="500" controls autoplay>
-										<source src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" type="video/mp4">
-									</video>
-								</th>
+								<th><img src="<%out.println(rs.getString("BabyForm.BabyVideo")); %>" width="85%"></th>
 								<th>　</th>
 							  </tr>
 						  </table>
