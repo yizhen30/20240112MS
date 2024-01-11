@@ -107,23 +107,25 @@
 							  <tr>
 							   <td><select class="form-select border-2" name="MatBT" style="height: 40px;width:200px;"required>
 			                       <option selected></option>
-                                   <option value="A">A型</option>
-                                   <option value="B">B型</option>
-                                   <option value="C">AB型</option>
-                                   <option value="D">O型</option>
-                                   <option value="E">None(未確認))</option>
+                                   <option value="1">A型</option>
+                                   <option value="2">B型</option>
+                                   <option value="3">AB型</option>
+                                   <option value="4">O型</option>
+                                   <option value="5">None(未確認))</option>
                                    </select></td>
 							   <td><select class="form-select border-2" name="ModPro" style="height: 40px;width:200px;"required>
                                     <option selected></option>
-                                    <option value="V">自然產</option>
-                                    <option value="C">剖腹產</option>
+                                    <option value="A">自然產</option>
+                                    <option value="B">剖腹產</option>
                                    </select></td>
                				   <td><select class="form-select border-2" name="Diepre" style="height: 40px;width:200px;"required>
                                     <option selected></option>
                                     <option value="1">葷</option>
                                     <option value="2">全素</option>
-                                    <option value="3">蛋奶素</option>
-                                    <option value="3">五辛素</option>
+                                    <option value="3">奶蛋素</option>
+                                    <option value="4">奶素</option>
+                                    <option value="5">蛋素</option>
+                                    <option value="6">植物五辛素</option>
                                     </select></td> 
                                
 							   <td><input type="text" class="form-control border-2" name="ConAddress" placeholder="臺北市大安區建國南路二段88號"style="height: 40px;width:260px"required/></td>                          
