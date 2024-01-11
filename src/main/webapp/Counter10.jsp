@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>櫃檯人員-媽媽基本資料</title>
+<title>櫃檯人員-寶寶基本資料</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,137 +63,111 @@
              <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
         <!-- Navbar End -->
-        
-        <%request.setCharacterEncoding("utf-8"); %>
+        <%request.setCharacterEncoding("UTF-8"); %>
 		<%
 			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
 			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
-			//out.println("Con= "+con);
 			Statement smt= con.createStatement();
-			Statement smt1= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.RelWithEC = MatFamForm.MatFam_SeqNO";
-			String sql1 = "SELECT * FROM MatForm left JOIN ModPro ON MatForm.ModPro = ModPro.MP_SeqNO";
-			String sql2 = "SELECT * FROM MatForm left JOIN BloodType ON MatForm.MatBT = BloodType.BT_SeqNO";
-			String sql3 = "SELECT * FROM MatForm left JOIN RelWithEC ON MatForm.RelWithMF = RelWithEC.RWE_SeqNO";
-			String sql4 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO";
-			String sql5 = "SELECT * FROM MatForm INNER JOIN MatFamForm ON MatForm.MatID = MatFamForm.MatID";
-			String sql6 = "SELECT * FROM MatForm left JOIN DiePre ON MatForm.DiePre = DiePre.DiePre_SeqNO";
-			String sql7 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.MatID = MatCheckIn.MatID";
-			ResultSet mm = smt1.executeQuery(sql);
-			ResultSet mm1 = smt.executeQuery(sql1);
-			ResultSet mm2 = smt.executeQuery(sql2);
-			ResultSet mm3 = smt1.executeQuery(sql3);
-			ResultSet mmc = smt.executeQuery(sql4);
-			ResultSet rs = smt.executeQuery(sql5);
-			ResultSet mm6 = smt.executeQuery(sql6);
-			ResultSet mmc1 = smt.executeQuery(sql7);
-			mm.next();
-			mm1.next();
-			mm2.next();
-			mm3.next();
-			mmc.next();
+			String sql = "SELECT * FROM MatForm left JOIN BabyForm ON MatForm.Mat_SeqNO = BabyForm.Mat_SeqNO";
+			String sql1 = "SELECT * FROM Gender";
+			String sql2 = "SELECT * FROM BloodType";
+			String sql3 = "SELECT * FROM MatCheckIn";
+			ResultSet rs = smt.executeQuery(sql);
+			ResultSet rs1 = smt.executeQuery(sql1);
+			ResultSet rs2 = smt.executeQuery(sql2);
+			ResultSet rs3 = smt.executeQuery(sql2);
 			rs.next();
-			mm6.next();
-			mmc1.next();
-			//rs1.next();
+			rs1.next();
+			rs2.next();
+			rs3.next();
 		%>
-        
-	<br><h2 align="center">修改媽媽基本資料</h2><br>
-	
-		<table style="width:30%" align="right"> 
-			<tr>
-			<th>入住日期</th>
-			<td><%out.println(mmc1.getString("MatCheckIn.CheckInDate"));%></td></tr>
-		</table>
-	   <form action="Counter7Edit_DBUpdate.jsp?MatID=<%=request.getParameter("MatID")%>" method="post" name="form">
-	          <div class="container">
-	              <div class="bg-light rounded">
-	                 <div class="row g-0">
-	                    <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-                      	 <br> <table width="1300" >
-						 <tr>
-						    <td >媽媽代碼</td>
-						    <td ><input value="M0000<%out.println(mm.getString("Mat_SeqNO"));%>" size="30" readonly></td>
-						    <td ></td>
-						    <td ></td>
-						  </tr>
-						<tr>
-						    <td >姓名</td>
-						    <td ><input name="MatName" value="<%out.println(mm.getString("MatName"));%>" size="30" required ></td>
-						    <td>生產方式</td>
-						    <td>
-						    <select name="ModPro" width="300" style="width: 260px" required >
-						    <option>原生產方式為<%out.println(mm1.getString("ModPro.ModPro"));%>，請選擇：
-						    <option value=V>自然產
-						    <option value=C>剖腹產
-						    </select>
-						    </td>
-						    
-						  </tr>
-						  <tr>
-						    <td>身分證字號</td>
-						    <td><input name="MatID_Edit" value="<%out.println(mm.getString("MatID"));%>"size="30" maxlength="10" readonly></td>
-						    <td>出生年月日</td>
-						    <td><input type="date" max="2006-12-31" min="1966-01-01" name="MatHBD" value="<%out.println(mm.getString("MatHBD"));%>" width="300" style="width: 260px"  placeholder="19XX/XX/XX" required ></td>
-						  </tr>
-						  <tr>
-						     <td>飲食注意事項</td>
-						    <td>
-						    <select name="DiePre"  width="300" style="width: 260px"  required >
-						    <option>原為<%out.println(mm6.getString("DiePre.DiePre"));%>，請選擇：
-						    <option value="1">葷</option>
-                            <option value="2">全素</option>
-                            <option value="3">蛋奶素</option>
-                            <option value="3">五辛素</option>
-						    </select>
-						    </td>
-						    <td>血型</td>
-						    <td>
-						    <select name="MatBT" width="300" style="width: 260px" required >
-						    <option>原血型為<%out.println(mm2.getString("BloodType.BloodType"));%>，請選擇：
-						    <option value=A>A型
-						    <option value=B>B型
-						    <option value=C>AB型
-						    <option value=D>O型
-						    <option value=E>None(未確認)
-						    </td>
-						  </tr>
-						   <tr>
-						    <td >緊急聯絡人姓名</td>
-						    <td ><input name="MatFamForm.MatFamName" value="<%out.println(rs.getString("MatFamForm.MatFamName"));%>"  size="30" required ></td>
-						    <td>緊急聯絡人聯絡電話</td>
-						    <td><input name="MatFamForm.ConPhone" value="<%out.println(rs.getString("MatFamForm.ConPhone"));%>" size="30" maxlength="10" placeholder="09XXXXXXXX" required ></td>
-						   </tr>
-						    <tr>
-						    <td>緊急聯絡人關係</td>
-						    <td>
-						    <select name="MatForm.RelWithMF" width="300" style="width: 260px" required >
-						    <option>原關係為<%out.println(mm3.getString("RelWithEC.RelWithEC"));%>，請選擇：
-						    <option value=1>夫妻
-						    <option value=2>父母
-						    <option value=3>兄弟姊妹
-						    <option value=4>其他
-						    </select>
-						    </td>
-						    <td>行動電話</td>
-						    <td><input name="ConPhone" value="<%out.println(mm.getString("ConPhone"));%>"size="30" maxlength="10" required ></td>
-						    </tr>
-						     <tr>
-						    <td>電子郵件</td>
-						    <td><input name="MatEmail" value="<%out.println(mm.getString("Email"));%>" size="30"  placeholder="XXX@gmail.com" required></td>
-						    <td>其他備註</td>
-						    <td><input value=""size="30" ></td>
-						    
-						    </tr>
-						</table>
-						<br><h5 align="right">
-						<button type="submit" style="background:#FF9999">完成修改</button> <a href="Counter2.jsp"><button type="button"style="background:#FFF2E0">返回搜尋頁</button></a></h5>
+		
+		   <div class="container-xxl py-3">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class= data-wow-delay="0.1s" style="min-height: 300px;">
+                           <table style="width:20%" align="right"> 
+								  	<tr>
+									    <th>入住日期</th>
+									    <td><%=rs3.getString("CheckInDate")%></td>
+								    </tr>
+						   </table>
+                           <table style="none;width:100%">
+	                            	<tr>
+									    <td>　</td>
+									    <td><h3><b><label><%=rs.getString("MatName")%>的資料</label></b></h3></td>
+									    <td>　</td>
+									    <td>　</td>
+									    <td><h3><b><label>緊急聯絡人的資料</label></b></h3></td>
+									    <td>　</td>
+								    </tr>
+								    
+	                            	<tr>
+									    <td>　</td><!-- Baby_SeqNO -->
+									    <td><h5><b><label for="Baby_SeqNO">寶寶編號</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("Baby_SeqNO")%></h5></td>
+									    <td>　</td><!-- 出生體重 -->
+									    <td><h5><b><label for="BirthWeight">出生體重</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("BirthWeight")%></h5></td>
+								    </tr>
+								    
+								    <tr>
+								    	<td>　</td><!-- 寶寶姓名 -->
+									    <td><h5><b><label for="BabyName">寶寶姓名</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("BabyName")%></h5></td>
+									    <td>　</td><!-- 出生身高 -->
+									    <td><h5><b><label for="WithMatRel">出生身高</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("BirthHeight")%></h5></td>
+								    </tr>
+								    
+								    <tr>
+									    <td>　</td><!-- 寶寶的出生年月日 -->
+									    <td><h5><b><label for="BabyHBD">出生年月日</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("BabyHBD")%></h5></td>
+									    <td>　</td><!-- 緊急聯絡人的身分證字號 -->
+									    <td><h5><b><label for="MatFamID">身分證字號</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamID")%></h5></td>
+								    </tr>
+								    
+								    <tr>
+									    <td>　</td><!-- 寶寶的性別 -->
+									    <td><h5><b><label for="BabyGender">聯絡電話</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs1.getString("Gender") %></h5></td>
+									    <td>　</td><!-- 緊急聯絡人的電話 -->
+									    <td><h5><b><label for="MatFamPhone">聯絡電話</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamForm.MatFamPhone") %></h5></td>
+								    </tr> 
+								    
+								    <tr>
+									    <td>　</td><!-- 寶寶的血型 -->
+									    <td><h5><b><label for="BabyBT">電子郵件</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs2.getString("BloodType") %></h5></td>
+									    <td>　</td><!-- 緊急聯絡人的電子郵件 -->
+									    <td><h5><b><label for="MatFamEmail">電子郵件</label></b></h5></td>
+									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamEmail") %></h5></td>
+								    </tr>
+								    
+								    								    
+								    <tr>
+								    	<td>　</td>
+								    	<td>　</td>
+								    	<td>　</td>							    	
+								    	<td><label><a href="Counter7.jsp?MatID=<%=rs.getString("MatID")%>">
+								    		<button type="button" style="background:#99CCFF">修改資料</button></a></label>
+								    	</td>
+									    <td>　</td>
+									    <td>　</td>
+								    </tr>		 					    
+								                    
+	                            </table>
+                            
+     
+
                     </div>
                 </div>
             </div>
         </div>
-</form>
-
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark  text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
@@ -265,5 +239,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+
 </body>
 </html>

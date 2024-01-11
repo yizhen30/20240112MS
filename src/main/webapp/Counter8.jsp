@@ -1,26 +1,13 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <%@page import="java.sql.*"%>
-<jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
-<%
-	if(request.getParameter("SearchID") !=null){
-    	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-		Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
-		Statement smt= con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-		String getmatdata = "SELECT * FROM MatForm WHERE MatID='"+request.getParameter("SearchID")+"'";
-		ResultSet matts = smt.executeQuery(getmatdata);
-	if(matts.next()){
-		session.setAttribute("UserID",request.getParameter("SearchID"));
-		//String redirectPage = paperrs.getString("RedirectPage");
-		response.sendRedirect("Counter3.jsp");
-	}else
-		out.println("錯誤身份證字號，請重新輸入");
-}
-%>
-<html>
+<jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' /> 
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>櫃檯人員-媽媽基本資料</title>
+    <meta charset="utf-8">
+    <title>櫃檯人員-媽媽基本資料</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -69,39 +56,98 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <div class="navbar-nav mx-auto">
-                     <a href="Counter2.jsp" class="nav-item nav-link">媽媽基本資料</a>
-                     <a href="Counter9.jsp" class="nav-item nav-link">寶寶基本資料</a>
-                     <a href="Counter13.jsp" class="nav-item nav-link">客戶預約</a>
-                     <a href="Counter16.jsp" class="nav-item nav-link">使用者權限管理</a>
-                 </div>
-             </div>
-             <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+                    
+                   <div class="navbar-nav mx-auto">
+                       <a href="counter2.html" class="nav-item nav-link">媽媽基本資料</a>
+                    <a href="counter9.html" class="nav-item nav-link">寶寶基本資料</a>
+                    <a href="counter13.html" class="nav-item nav-link">客戶預約</a>
+                    <a href="counter16.html" class="nav-item nav-link">使用者權限管理</a>
+                    </div>
+                    </div>
+              
+               
+                <a href="index.html" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
+       
         </nav>
         <!-- Navbar End -->
+        <%request.setCharacterEncoding("utf-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			//out.println("Con= "+con);
+			Statement smt= con.createStatement();
+			//String sql0 = "SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.MatID = MatCheckIn.MatID where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql = "SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql1 = "SELECT * FROM MatForm INNER JOIN (RoomType left JOIN MatCheckIn ON RoomType.RoomType_SeqNO = MatCheckIn.RoomType) ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			//String sql2 = "SELECT * FROM MatForm INNER JOIN (RoomType left JOIN MatCheckIn ON RoomType.RoomType_SeqNO = MatCheckIn.RoomType) ON MatForm.MatID = MatCheckIn.MatID where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			//String sql3 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.MatID = MatCheckIn.MatID where MatForm.MatID='" +session.getAttribute("UserID")+"'";
+			//ResultSet mmc0 = smt.executeQuery(sql0);
+			ResultSet mmc = smt.executeQuery(sql);
+			ResultSet mmc1 = smt.executeQuery(sql1);
+			//ResultSet mmc2 = smt.executeQuery(sql2);
+			//ResultSet mmc3 = smt.executeQuery(sql3);
+			//mmc0.next();
+			mmc.next();
+			mmc1.next();
+			//mmc2.next();
+			//mmc3.next();
+		%>
+		
+
+<br><h2 align="center">修改媽媽入住資料</h2><br>
+
+<table style="width:30%" align="right"> 
+		<tr>
+		<th>入住日期</th>
+		<td><%out.println(mmc.getString("MatCheckIn.CheckInDate"));%></td></tr>
+	</table>
+   <form action="Counter8Edit_DBUpdate.jsp?MatID=<%=request.getParameter("MatID")%>" method="post" name="form">
+            <div class="container">
+                <div class="bg-light rounded">
+                    <div class="row g-0">
+                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
+                           
+                          <br> <table width="1300" > 
+						   <tr><td>房型</td>
+						    <td><select  name="RoomType" class="form-select border-2" width="300" style="width: 260px"required>
+					              <option selected>原房型為<%out.println(mmc1.getString("RoomType"));%>，請選擇：</option>
+		                          <option value="R1">景觀房</option>
+		                          <option value="R2">尊爵房</option>
+		                          <option value="R3">VIP房</option>
+		                          </select>
+		                    </td>
+		                   </tr>
+						    
+						   <tr> <td >房號</td>
+						    <td ><input name="RoomNo" value="<%out.println(mmc.getString("RoomNo"));%>" class="form-select border-2" size="30" width="300" style="width: 260px"></td></tr>
+						    
+						    <tr><td >入住日期</td>
+						    <td ><input name="CheckInDate" type="date" value="<%out.println(mmc.getString("CheckInDate"));%>" size="30" class="form-select border-2" width="300" style="width: 260px"></td></tr>
+						    
+						    <tr><td >退房日期</td>
+						    <td ><input name="CheckOutDate" type="date" value="<%out.println(mmc.getString("CheckOutDate"));%>" size="30" class="form-select border-2" width="300" style="width: 260px"></td></tr>
+						    
+						    <tr><td>入住天數</td>
+						    <td><input name="Day" value="<%out.println(mmc.getString("Day"));%>" size="30" class="form-select border-2" width="300" style="width: 260px"></td></tr>
+						    
+						   
+						    
+						    <tr><td>備註</td>
+						    <td><input value=""size="30"class="form-select border-2" width="300" style="width: 260px"></td></tr>
+						 
+
+  						</table>
+                       
+                    <h5 align="right"><button type="submit"style="background:#FF9999">完成修改</button> </h5>
+                </div>
+            </div>
+        </div>
+        </div>
         
-         <!-- 媽媽查詢 -->
-		<form method="POST" action="Counter2_DB.jsp">
-		<br><h2 align="center">媽媽基本資料查詢</h2><br>
-		      
-		      <h5>&emsp; &emsp; 媽媽身分證字號 <input type="text" placeholder="輸入媽媽身分證字號..." name="SearchID" required> 
-		      <button type="submit" name="searchBtn" value="查詢" > 確認</button>  <a href="Counter4.jsp"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
-		         <div class="container-xxl py-3">
-		            <div class="container">
-		                <div class="bg-light rounded">
-		                    <div class="row g-0">
-		                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-		                           
-		     
-		
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		
-		</form>
+	</form>
 
 
-        <!-- Footer Start -->
+      <!-- Footer Start -->
         <div class="container-fluid bg-dark  text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
                 <div class="container py-1 ">
                 <div class="row g-5 ">
@@ -159,8 +205,13 @@
             </div>
         
         <!-- Footer End -->
-		<!-- Back to Top -->
-        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+
+
+
+
+
+     
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -171,6 +222,6 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
 </body>
+
 </html>

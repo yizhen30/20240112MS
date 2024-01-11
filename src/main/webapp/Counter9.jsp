@@ -2,10 +2,25 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
+<%
+	if(request.getParameter("SearchID") !=null){
+    	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+		Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+		Statement smt= con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+		String getmatdata = "SELECT * FROM MatForm WHERE MatID='"+request.getParameter("SearchID")+"'";
+		ResultSet matts = smt.executeQuery(getmatdata);
+	if(matts.next()){
+		session.setAttribute("UserID",request.getParameter("SearchID"));
+		//String redirectPage = paperrs.getString("RedirectPage");
+		response.sendRedirect("Counter10.jsp");
+	}else
+		out.println("錯誤身份證字號，請重新輸入");
+}
+%>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>櫃檯人員-媽媽基本資料</title>
+<title>櫃檯人員-寶寶基本資料</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -63,132 +78,28 @@
              <a href="Index.jsp" class="btn btn-primary rounded-pill px-3 d-none d-lg-block">使用者登出<i class="fa fa-arrow-right ms-3"></i></a>
         </nav>
         <!-- Navbar End -->
-        <%request.setCharacterEncoding("UTF-8"); %>
-		<%
-			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
-			Statement smt= con.createStatement();
-			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO";
-			String sql1 = "SELECT * FROM BloodType";
-			String sql2 = "SELECT * FROM Relationship";
-			String sql3 = "SELECT * FROM ProMethods";
-			String sql4 = "SELECT * FROM DiePre";
-			String sql5 = "SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO";
-			ResultSet rs = smt.executeQuery(sql);
-			ResultSet rs1 = smt.executeQuery(sql1);
-			ResultSet rs2 = smt.executeQuery(sql2);
-			ResultSet rs3 = smt.executeQuery(sql3);
-			ResultSet rs4 = smt.executeQuery(sql4);
-			ResultSet rs5 = smt.executeQuery(sql5);
-			rs.next();
-			rs1.next();
-			rs2.next();
-			rs3.next();
-			rs4.next();
-			rs5.next();
-			%>
+        
+         <!-- 媽媽查詢 -->
+		<form method="POST" action="Counter9_DB.jsp">
+		<br><h2 align="center">媽媽基本資料查詢</h2><br>
+		      
+		      <h5>&emsp; &emsp; 媽媽身分證字號 <input type="text" placeholder="輸入媽媽身分證字號..." name="SearchID" required> 
+		      <button type="submit" name="searchBtn" value="查詢" > 確認</button>  <a href="Counter4.jsp"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
+		         <div class="container-xxl py-3">
+		            <div class="container">
+		                <div class="bg-light rounded">
+		                    <div class="row g-0">
+		                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
+		                           
+		     
 		
-		   <div class="container-xxl py-3">
-            <div class="container">
-                <div class="bg-light rounded">
-                    <div class="row g-0">
-                        <div class= data-wow-delay="0.1s" style="min-height: 300px;">
-                           <table style="width:20%" align="right"> 
-								  	<tr>
-									    <th>入住日期</th>
-									    <td><%=rs5.getString("CheckInDate")%></td>
-								    </tr>
-						   </table>
-                           <table style="none;width:100%">
-	                            	<tr>
-									    <td>　</td>
-									    <td><h3><b><label><%=rs.getString("MatName")%>的資料</label></b></h3></td>
-									    <td>　</td>
-									    <td>　</td>
-									    <td><h3><b><label>緊急聯絡人的資料</label></b></h3></td>
-									    <td>　</td>
-								    </tr>
-								    
-	                            	<tr>
-									    <td>　</td><!-- 媽媽的血型 -->
-									    <td><h5><b><label for="MatBT">血型</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs1.getString("BloodType")%></h5></td>
-									    <td>　</td><!-- 媽媽的緊急聯絡人 -->
-									    <td><h5><b><label for="MatFamName">緊急聯絡人</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamForm.MatFamName")%></h5></td>
-								    </tr>
-								    
-								    <tr>
-								    	<td>　</td><!-- 媽媽的身分證字號 -->
-									    <td><h5><b><label for="MatID">身分證字號</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatID")%></h5></td>
-									    <td>　</td><!-- 媽媽與緊急聯絡人關係 -->
-									    <td><h5><b><label for="WithMatRel">關係</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs2.getString("Relationship")%></h5></td>
-								    </tr>
-								    
-								    <tr>
-									    <td>　</td><!-- 媽媽的出生年月日 -->
-									    <td><h5><b><label for="MatHBD">出生年月日</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatHBD")%></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的身分證字號 -->
-									    <td><h5><b><label for="MatFamID">身分證字號</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamID")%></h5></td>
-								    </tr>
-								    
-								    <tr>
-									    <td>　</td><!-- 媽媽的聯絡電話 -->
-									    <td><h5><b><label for="MatPhone">聯絡電話</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatPhone") %></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的電話 -->
-									    <td><h5><b><label for="MatFamPhone">聯絡電話</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamForm.MatFamPhone") %></h5></td>
-								    </tr> 
-								    
-								    <tr>
-									    <td>　</td><!-- 媽媽的電子郵件 -->
-									    <td><h5><b><label for="MatEmail">電子郵件</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatEmail") %></h5></td>
-									    <td>　</td><!-- 緊急聯絡人的電子郵件 -->
-									    <td><h5><b><label for="MatFamEmail">電子郵件</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs.getString("MatFamEmail") %></h5></td>
-								    </tr>
-								    
-								    <tr>
-									    <td>　</td><!-- 媽媽的生產方式 -->
-									    <td><h5><b><label for="ProMethods">生產方式</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%=rs3.getString("ProMethods") %></h5></td>
-									    <td>　</td>
-									    <td>　</td>
-								    </tr>
-								    
-								    <tr>
-									    <td>　</td><!-- 媽媽的飲食注意事項 -->
-									    <td><h5><b><label for="DiePre">飲食注意事項</label></b></h5></td>
-									    <td><h5 style="color:#004B96;"><%out.println(rs4.getString("DiePre.DiePre"));%></h5></td>
-									    <td>　</td>
-									    <td>　</td>
-								    </tr>
-								    
-								    <tr>
-								    	<td>　</td>
-								    	<td>　</td>
-								    	<td>　</td>							    	
-								    	<td><label><a href="Counter7.jsp?MatID=<%=rs.getString("MatID")%>">
-								    		<button type="button" style="background:#99CCFF">修改資料</button></a></label>
-								    	</td>
-									    <td>　</td>
-									    <td>　</td>
-								    </tr>		 					    
-								                    
-	                            </table>
-                            
-     
+		                    </div>
+		                </div>
+		            </div>
+		        </div>
+		</div>
+		</form>
 
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Footer Start -->
         <div class="container-fluid bg-dark  text-white-50 footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.01s">
@@ -246,7 +157,7 @@
                 </div>
                 </div>
             </div>
-        </div>
+        
         <!-- Footer End -->
 		<!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>

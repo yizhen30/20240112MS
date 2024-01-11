@@ -2,21 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@page import="java.sql.*"%>
 <jsp:useBean id='objDBConfig' scope='session' class='hitstd.group.tool.database.DBConfig' />
-<%
-	if(request.getParameter("SearchID") !=null){
-    	Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
-		Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
-		Statement smt= con.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-		String getmatdata = "SELECT * FROM MatForm WHERE MatID='"+request.getParameter("SearchID")+"'";
-		ResultSet matts = smt.executeQuery(getmatdata);
-	if(matts.next()){
-		session.setAttribute("UserID",request.getParameter("SearchID"));
-		//String redirectPage = paperrs.getString("RedirectPage");
-		response.sendRedirect("Counter3.jsp");
-	}else
-		out.println("錯誤身份證字號，請重新輸入");
-}
-%>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -79,26 +64,139 @@
         </nav>
         <!-- Navbar End -->
         
-         <!-- 媽媽查詢 -->
-		<form method="POST" action="Counter2_DB.jsp">
-		<br><h2 align="center">媽媽基本資料查詢</h2><br>
-		      
-		      <h5>&emsp; &emsp; 媽媽身分證字號 <input type="text" placeholder="輸入媽媽身分證字號..." name="SearchID" required> 
-		      <button type="submit" name="searchBtn" value="查詢" > 確認</button>  <a href="Counter4.jsp"> <button type="button" style="background:#F8CECC" > 新增資料</button></a></h5> 
-		         <div class="container-xxl py-3">
-		            <div class="container">
-		                <div class="bg-light rounded">
-		                    <div class="row g-0">
-		                        <div class= data-wow-delay="0.1s" style="min-height: 400px;">
-		                           
-		     
-		
-		                    </div>
-		                </div>
-		            </div>
-		        </div>
-		
-		</form>
+        <%request.setCharacterEncoding("utf-8"); %>
+		<%
+			Class.forName("net.ucanaccess.jdbc.UcanaccessDriver");
+			Connection con=DriverManager.getConnection("jdbc:ucanaccess://"+objDBConfig.FilePath()+";");
+			//out.println("Con= "+con);
+			Statement smt= con.createStatement();
+			Statement smt1= con.createStatement();
+			String sql = "SELECT * FROM MatForm left JOIN MatFamForm ON MatForm.MatFamName = MatFamForm.MatFam_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql1 = "SELECT * FROM MatForm left JOIN ProMethods ON MatForm.ProMethods = ProMethods.ProMet_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql2 = "SELECT * FROM MatForm left JOIN BloodType ON MatForm.MatBT = BloodType.BT_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql3 = "SELECT * FROM MatForm left JOIN Relationship ON MatForm.WithMatRel = Relationship.Rel_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql4 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.Mat_SeqNO = MatCheckIn.Mat_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			//String sql5 = "SELECT * FROM MatForm INNER JOIN MatFamForm ON MatForm.MatID = MatFamForm.MatID where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			String sql6 = "SELECT * FROM MatForm left JOIN DiePre ON MatForm.DiePre = DiePre.DiePre_SeqNO where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			//String sql7 ="SELECT * FROM MatForm left JOIN MatCheckIn ON MatForm.MatID = MatCheckIn.MatID where MatForm.MatID ='" +session.getAttribute("UserID")+"'";
+			ResultSet mm = smt1.executeQuery(sql);
+			ResultSet mm1 = smt.executeQuery(sql1);
+			ResultSet mm2 = smt.executeQuery(sql2);
+			ResultSet mm3 = smt1.executeQuery(sql3);
+			ResultSet mmc = smt.executeQuery(sql4);
+			//ResultSet rs = smt.executeQuery(sql5);
+			ResultSet mm6 = smt.executeQuery(sql6);
+			//ResultSet mmc1 = smt.executeQuery(sql7);
+			mm.next();
+			mm1.next();
+			mm2.next();
+			mm3.next();
+			mmc.next();
+			//rs.next();
+			mm6.next();
+			//mmc1.next();
+			//rs1.next();
+		%>
+        
+	<br><h2 align="center">修改媽媽基本資料</h2><br>
+	
+		<table style="width:30%" align="right"> 
+			<tr>
+			<th>入住日期</th>
+			<td><%out.println(mmc.getString("MatCheckIn.CheckInDate"));%></td></tr>
+		</table>
+	   <form action="Counter7Edit_DBUpdate.jsp?MatID=<%=request.getParameter("MatID")%>" method="post" name="form">
+	          <div class="container">
+	              <div class="bg-light rounded">
+	                 <div class="row g-0">
+	                    <div class= data-wow-delay="0.1s" style="min-height: 400px;">
+                      	 <br> 
+                      	 <table width="1300" >
+						 <tr>
+						    <td >媽媽代碼</td>
+						    <td ><input value="M0000<%out.println(mm.getString("Mat_SeqNO"));%>" size="30" readonly></td>
+						    <td ></td>
+						    <td ></td>
+						  </tr>
+						<tr>
+						    <td >姓名</td>
+						    <td ><input name="MatName" value="<%out.println(mm.getString("MatName"));%>" size="30" required ></td>
+						    <td>生產方式</td>
+						    <td>
+						    <select name="ProMethods" width="300" style="width: 260px" required >
+						    <option>原生產方式為<%out.println(mm1.getString("ProMethods.ProMethods"));%>，請選擇：
+						    <option value=A>自然產</option>
+						    <option value=B>剖腹產</option>
+						    </select>
+						    </td>
+						    
+						  </tr>
+						  <tr>
+						    <td>身分證字號</td>
+						    <td><input name="MatID_Edit" value="<%out.println(mm.getString("MatID"));%>"size="30" maxlength="10" readonly></td>
+						    <td>出生年月日</td>
+						    <td><input type="date" max="2006-12-31" min="1966-01-01" name="MatHBD" value="<%out.println(mm.getString("MatHBD"));%>" width="300" style="width: 260px"  placeholder="19XX/XX/XX" required ></td>
+						  </tr>
+						  <tr>
+						     <td>飲食注意事項</td>
+						    <td>
+						    <select name="DiePre"  width="300" style="width: 260px"  required >
+						    <option>原為<%out.println(mm6.getString("DiePre.DiePre"));%>，請選擇：
+						    <option value="1">葷</option>
+                            <option value="2">全素</option>
+                            <option value="3">奶蛋素</option>
+                            <option value="4">奶素</option>
+                            <option value="5">蛋素</option>
+                            <option value="6">植物五辛素</option>
+						    </select>
+						    </td>
+						    <td>血型</td>
+						    <td>
+						    <select name="MatBT" width="300" style="width: 260px" required >
+						    <option>原血型為<%out.println(mm2.getString("BloodType.BloodType"));%>，請選擇：
+						    <option value=1>A型</option>
+						    <option value=2>B型</option>
+						    <option value=3>AB型</option>
+						    <option value=4>O型</option>
+						    <option value=5>None（未確認）</option>
+						    </select>
+						    </td>
+						  </tr>
+						   <tr>
+						    <td >緊急聯絡人姓名</td>
+						    <td ><input name="MatFamForm.MatFamName" value="<%out.println(mm.getString("MatFamForm.MatFamName"));%>"  size="30" required ></td>
+						    <td>緊急聯絡人聯絡電話</td>
+						    <td><input name="MatFamForm.MatFamPhone" value="<%out.println(mm.getString("MatFamForm.MatFamPhone"));%>" size="30" maxlength="10" placeholder="09XXXXXXXX" required ></td>
+						   </tr>
+						    <tr>
+						    <td>緊急聯絡人關係</td>
+						    <td>
+						    <select name="MatForm.RelWithMF" width="300" style="width: 260px" required >
+						    <option>原關係為<%out.println(mm3.getString("Relationship.Relationship"));%>，請選擇：
+						    <option value=1>夫妻</option>
+						    <option value=2>父母</option>
+						    <option value=3>兄弟姊妹</option>
+						    <option value=4>其他</option>
+						    </select>
+						    </td>
+						    <td>行動電話</td>
+						    <td><input name="MatPhone" value="<%out.println(mm.getString("MatPhone"));%>"size="30" maxlength="10" required ></td>
+						    </tr>
+						     <tr>
+						    <td>電子郵件</td>
+						    <td><input name="MatEmail" value="<%out.println(mm.getString("MatEmail"));%>" size="30"  placeholder="XXX@gmail.com" required></td>
+						    <td>其他備註</td>
+						    <td><input value=""size="30" ></td>
+						    
+						    </tr>
+						</table>
+						<br><h5 align="right">
+						<button type="submit" style="background:#FF9999">完成修改</button> <a href="Counter2.jsp"><button type="button"style="background:#FFF2E0">返回搜尋頁</button></a></h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+</form>
 
 
         <!-- Footer Start -->
@@ -157,7 +255,7 @@
                 </div>
                 </div>
             </div>
-        
+        </div>
         <!-- Footer End -->
 		<!-- Back to Top -->
         <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
@@ -171,6 +269,5 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
-
 </body>
 </html>
